@@ -46,8 +46,9 @@ final class TimerViewModel: ObservableObject {
     
     @Published var display: String = ""
     
-    func initFromUserDefaults() {
+    func initFromUserDefaults(timerData: TimerData = TimerData()) {
         // TODO: use info from user defaults to populate TimerData
+        self.timerData = timerData
     }
     
     init() {
@@ -174,6 +175,5 @@ final class TimerViewModel: ObservableObject {
         self.currentTimer.invalidate()
         self.timerState = .invalid
         self.display = "FINISHEDDD"
-        
     }
 }

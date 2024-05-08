@@ -19,6 +19,7 @@
 		160312A72BEBE8FE00478E73 /* TimerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160312A62BEBE8FE00478E73 /* TimerListView.swift */; };
 		160312A92BEBE90800478E73 /* TimerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160312A82BEBE90800478E73 /* TimerDetailView.swift */; };
 		160312AB2BEBE92500478E73 /* AddTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160312AA2BEBE92500478E73 /* AddTimerView.swift */; };
+		160312B02BEC15ED00478E73 /* TimerDetailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160312AF2BEC15ED00478E73 /* TimerDetailButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		160312A82BEBE90800478E73 /* TimerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDetailView.swift; sourceTree = "<group>"; };
 		160312AA2BEBE92500478E73 /* AddTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimerView.swift; sourceTree = "<group>"; };
 		160312AC2BEBE96500478E73 /* INFO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = INFO.md; sourceTree = "<group>"; };
+		160312AF2BEC15ED00478E73 /* TimerDetailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDetailButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 		1603129F2BEBE47D00478E73 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				160312AE2BEC15D500478E73 /* Components */,
 				160312A62BEBE8FE00478E73 /* TimerListView.swift */,
 				160312A82BEBE90800478E73 /* TimerDetailView.swift */,
 				160312AA2BEBE92500478E73 /* AddTimerView.swift */,
@@ -174,6 +177,14 @@
 			children = (
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		160312AE2BEC15D500478E73 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				160312AF2BEC15ED00478E73 /* TimerDetailButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +319,7 @@
 			files = (
 				160312A92BEBE90800478E73 /* TimerDetailView.swift in Sources */,
 				160312A72BEBE8FE00478E73 /* TimerListView.swift in Sources */,
+				160312B02BEC15ED00478E73 /* TimerDetailButton.swift in Sources */,
 				160312A52BEBE62E00478E73 /* TimerViewModel.swift in Sources */,
 				160312772BE998FA00478E73 /* ContentView.swift in Sources */,
 				160312AB2BEBE92500478E73 /* AddTimerView.swift in Sources */,

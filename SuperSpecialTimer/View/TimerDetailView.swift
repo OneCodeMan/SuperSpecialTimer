@@ -19,22 +19,16 @@ struct TimerDetailView: View {
             .padding()
             
             HStack {
-                Button {
+                TimerDetailButton(iconString: "pause.circle") {
                     timerViewModel.onPause()
-                } label: {
-                    Text("PAUSE")
                 }
                 
-                Button {
+                TimerDetailButton(iconString: "play.circle") {
                     timerViewModel.onResume()
-                } label: {
-                    Text("RESUME")
                 }
                 
-                Button {
+                TimerDetailButton(iconString: "stop.circle") {
                     timerViewModel.onStop()
-                } label: {
-                    Text("STOP")
                 }
             }
             
