@@ -11,7 +11,8 @@
 - [ ] Parse the seconds into minutes and seconds... 
     - "1:34", "10:34", "10:03"
     
-- [ ] Add the concept of "sets".
+- [ ] Add the concept of "sets" or different types of timers.
+- [ ] Implement user defaults
 
 ...
 
