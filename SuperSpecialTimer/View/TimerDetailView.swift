@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct TimerDetailView: View {
+    @StateObject var timerViewModel = TimerViewModel()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("state: \(timerViewModel.timerState.description)")
+            Text("round #: \(timerViewModel.timerData.currentRound)")
+            Text("duration: \(timerViewModel.display)")
+        }.onAppear {
+            timerViewModel.onPlay()
+        }
     }
 }
 
