@@ -5,14 +5,50 @@
 //  Created by Dave Gumba on 2024-05-08.
 //
 
+/*
+ /
+
+ //                       _oo0oo_
+ //                      o8888888o
+ //                      88" . "88
+ //                      (| -_- |)
+ //                      0\  =  /0
+ //                    ___/`---'\___
+ //                  .' \\|     |// '.
+ //                 / \\|||  :  |||// \
+ //                / _||||| -:- |||||- \
+ //               |   | \\\  -  /// |   |
+ //               | \_|  ''\---/''  |_/ |
+ //               \  .-\__  '-'  ___/-. /
+ //             ___'. .'  /--.--\  `. .'___
+ //          ."" '<  `.___\_<|>_/___.' >' "".
+ //         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+ //         \  \ `_.   \_ __\ /__ _/   .-` /  /
+ //     =====`-.____`.___ \_____/___.-`___.-'=====
+ //                       `=---='
+             BUDDHA BLESSES THIS CODE TO BE BUG-FREE!!!!
+                         W CODING!!!!
+ 
+ */
+
 import Foundation
 
 final class TimerViewModel: ObservableObject {
     @Published var timerData: TimerData = TimerData()
     private var currentTimer: Timer = Timer()
+    
     @Published var timerState: TimerState
     
+    // When we resume from a pause,
+    // we don't know whether to go to .work or .rest
+    // we store that info here.
+    private var stateBeforeLastPause: TimerState = .invalid
+    
     @Published var display: String = ""
+    
+    func initFromUserDefaults() {
+        // TODO: use info from user defaults to populate TimerData
+    }
     
     init() {
         self.timerState = .work
@@ -45,6 +81,10 @@ final class TimerViewModel: ObservableObject {
                 } else {
                     self.timerState = self.timerData.currentRound < self.timerData.numberOfRounds ? .work : .invalid
                     self.timerData.currentRound += 1
+                    
+                    if self.timerState == .invalid {
+                        self.onStop()
+                    }
 
                     // reset duration
                     self.timerData.currentRestDuration = self.timerData.restDuration
@@ -56,8 +96,15 @@ final class TimerViewModel: ObservableObject {
     
     func onPause() {
         print("Pause button pressed")
+        
+        // stop the timer
         self.currentTimer.invalidate()
         
+        // save our previous state
+        self.stateBeforeLastPause = self.timerState
+        
+        // show the frozen display of remaining seconds of whatever state we're in.
+        // work or rest
         switch self.timerState {
         case .work:
             self.display = "\(self.timerData.currentWorkDuration)"
@@ -69,10 +116,21 @@ final class TimerViewModel: ObservableObject {
             break
         }
         
+        // then change the state to paused
+        self.timerState = .pause
+        
     }
     
     func onResume() {
         print("Resume button pressed")
+        
+        // If we're not 'paused',
+        // this function shouldn't do anything, it shouldn't even be called
+        guard self.timerState == .pause else { return }
+        
+        // go back to the state we were in before the pause.
+        self.timerState = self.stateBeforeLastPause
+        
         // Timer logic
         self.currentTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { tm in
             
@@ -96,6 +154,11 @@ final class TimerViewModel: ObservableObject {
                     self.timerData.currentRestDuration -= 1
                 } else {
                     self.timerState = self.timerData.currentRound < self.timerData.numberOfRounds ? .work : .invalid
+                    
+                    if self.timerState == .invalid {
+                        self.onStop()
+                    }
+                    
                     self.timerData.currentRound += 1
                     
                     // reset duration
@@ -110,6 +173,7 @@ final class TimerViewModel: ObservableObject {
         print("Stop button pressed")
         self.currentTimer.invalidate()
         self.timerState = .invalid
+        self.display = "FINISHEDDD"
         
     }
 }
