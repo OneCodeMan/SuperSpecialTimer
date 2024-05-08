@@ -11,6 +11,17 @@ struct TimerDetailView: View {
     @StateObject var timerViewModel = TimerViewModel()
     var body: some View {
         VStack {
+            
+            VStack {
+                Text(timerViewModel.timerData.title)
+                    .font(.largeTitle)
+                Text("Rounds: \(timerViewModel.timerData.numberOfRounds)")
+                Text("Work (s): \(timerViewModel.timerData.workDuration)")
+                Text("Rest (s): \(timerViewModel.timerData.restDuration)")
+            }
+            
+            Divider()
+            
             VStack {
                 Text("state: \(timerViewModel.timerState.description)")
                 Text("round #: \(timerViewModel.timerData.currentRound)")

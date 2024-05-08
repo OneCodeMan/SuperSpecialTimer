@@ -8,8 +8,15 @@
 import Foundation
 
 // MARK: timer data
-struct TimerData {
+// what we'll display on TimerListView
+struct TimerData: Identifiable {
+    let id = UUID()
+    
+    // user related
     var title: String
+    var lastUsed: Date
+    
+    // functionality
     var workDuration: Int // on, seconds
     var currentWorkDuration: Int
     
@@ -22,8 +29,24 @@ struct TimerData {
     
     var numberOfRounds: Int // if infinity, let it go for a while
     var currentRound: Int
-    var lastUsed: Date
     
+    init(title: String, workDuration: Int, restDuration: Int, breakDuration: Int, numberOfRounds: Int) {
+        // user defined
+        self.title = title
+        self.workDuration = workDuration
+        self.restDuration = restDuration
+        self.breakDuration = breakDuration
+        self.numberOfRounds = numberOfRounds
+        
+        // internal
+        self.lastUsed = Date.now
+        self.currentRound = 1
+        self.currentWorkDuration = self.workDuration
+        self.currentRestDuration = self.restDuration
+        self.currentBreakDuration = self.breakDuration
+    }
+    
+    // default init
     init() {
         self.title = "Default Title"
         self.workDuration = 4

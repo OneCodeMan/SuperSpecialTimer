@@ -46,8 +46,14 @@ final class TimerViewModel: ObservableObject {
     
     @Published var display: String = ""
     
+    // TODO: for final
     func initFromUserDefaults(timerData: TimerData = TimerData()) {
         // TODO: use info from user defaults to populate TimerData
+        self.timerData = timerData
+    }
+    
+    // TODO: for testing//for now
+    init(timerData: TimerData = TimerData()) {
         self.timerData = timerData
     }
     
