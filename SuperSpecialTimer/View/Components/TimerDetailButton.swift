@@ -15,6 +15,8 @@ import SwiftUI
 struct TimerDetailButton: View {
     let iconString: String
     let action: () -> ()
+    @State var isVisible = true // might not need this
+
     var body: some View {
         Button {
             action()

@@ -18,18 +18,32 @@ struct TimerDetailView: View {
             }
             .padding()
             
+            /**
+            *  Button group:
+                play --> show pause and stop button
+                paused --> show play and stop button
+                stop --> for now, initial state or nothing.
+             */
             HStack {
-                TimerDetailButton(iconString: "pause.circle") {
-                    timerViewModel.onPause()
+                
+                if timerViewModel.timerState == .work || timerViewModel.timerState == .rest {
+
+                    TimerDetailButton(iconString: "pause.circle") {
+                        timerViewModel.onPause()
+                    }
                 }
                 
-                TimerDetailButton(iconString: "play.circle") {
-                    timerViewModel.onResume()
+                if timerViewModel.timerState == .pause {
+                    TimerDetailButton(iconString: "play.circle") {
+                        timerViewModel.onResume()
+                    }
                 }
                 
                 TimerDetailButton(iconString: "stop.circle") {
+                    // TODO: alert: are you sure?
                     timerViewModel.onStop()
                 }
+                
             }
             
         }.onAppear {
