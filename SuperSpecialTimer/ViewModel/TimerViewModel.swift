@@ -37,7 +37,7 @@ final class TimerViewModel: ObservableObject {
     @Published var timerData: TimerData = TimerData()
     private var currentTimer: Timer = Timer()
     
-    @Published var timerState: TimerState
+    @Published var timerState: TimerState = .ready
     
     // When we resume from a pause,
     // we don't know whether to go to .work or .rest
@@ -52,11 +52,16 @@ final class TimerViewModel: ObservableObject {
     }
     
     init() {
-        self.timerState = .work
+        self.timerState = .ready
     }
     
     func onPlay() {
         print("Play button pressed")
+        
+        // if it's our initial press, set timerState to .work
+        if self.timerState == .ready {
+            self.timerState = .work
+        }
         
         // Timer logic
         self.currentTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { tm in
@@ -111,9 +116,7 @@ final class TimerViewModel: ObservableObject {
             self.display = "\(self.timerData.currentWorkDuration)"
         case .rest:
             self.display = "\(self.timerData.currentRestDuration)"
-        case .pause:
-            break
-        case .invalid:
+        case .pause, .ready, .invalid:
             break
         }
         
@@ -172,8 +175,15 @@ final class TimerViewModel: ObservableObject {
     
     func onStop() {
         print("Stop button pressed")
+        
+        // stop the timer
         self.currentTimer.invalidate()
-        self.timerState = .invalid
+        
+        // reset timer values.
+        self.timerData.reset()
+        
+        // update UI
+        self.timerState = .ready
         self.display = "FINISHEDDD"
     }
 }

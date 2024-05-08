@@ -30,17 +30,25 @@ struct TimerData {
         self.restDuration = 4
         self.breakDuration = Int.min
         self.numberOfRounds = 5
-        self.currentRound = 1
         self.lastUsed = Date.now
         
+        self.currentRound = 1
         self.currentWorkDuration = self.workDuration
         self.currentRestDuration = self.restDuration
         self.currentBreakDuration = self.breakDuration
+    }
+    
+    mutating func reset() {
+        self.currentWorkDuration = self.workDuration
+        self.currentRestDuration = self.restDuration
+        self.currentBreakDuration = self.breakDuration
+        self.currentRound = 1
     }
 }
 
 // MARK: timer state
 enum TimerState: CustomStringConvertible {
+    case ready
     case work
     case rest
     case pause // break
@@ -48,6 +56,8 @@ enum TimerState: CustomStringConvertible {
     
     var description: String {
         switch self {
+        case .ready:
+            "ready"
         case .work:
             "work"
         case .rest:

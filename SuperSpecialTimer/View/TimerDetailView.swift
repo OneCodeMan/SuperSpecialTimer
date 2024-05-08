@@ -20,11 +20,19 @@ struct TimerDetailView: View {
             
             /**
             *  Button group:
+                ready --> show play and stop button
                 play --> show pause and stop button
                 paused --> show play and stop button
                 stop --> for now, initial state or nothing.
              */
             HStack {
+                
+                if timerViewModel.timerState == .ready {
+
+                    TimerDetailButton(iconString: "play.circle") {
+                        timerViewModel.onPlay()
+                    }
+                }
                 
                 if timerViewModel.timerState == .work || timerViewModel.timerState == .rest {
 
@@ -46,8 +54,6 @@ struct TimerDetailView: View {
                 
             }
             
-        }.onAppear {
-            timerViewModel.onPlay()
         }
     }
 }
