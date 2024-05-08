@@ -31,7 +31,6 @@ final class TimerViewModel: ObservableObject {
                     self.timerData.currentWorkDuration -= 1
                 } else {
                     self.timerState = self.timerData.currentRound < self.timerData.numberOfRounds ? .rest : .invalid
-                    self.timerData.currentRound += 1
                     
                     // reset duration
                     self.timerData.currentWorkDuration = self.timerData.workDuration
@@ -45,9 +44,10 @@ final class TimerViewModel: ObservableObject {
                     self.timerData.currentRestDuration -= 1
                 } else {
                     self.timerState = self.timerData.currentRound < self.timerData.numberOfRounds ? .work : .invalid
-                    
+                    self.timerData.currentRound += 1
+
                     // reset duration
-                    self.timerData.currentRestDuration = self.timerData.currentRestDuration
+                    self.timerData.currentRestDuration = self.timerData.restDuration
                 }
             }
 
@@ -64,24 +64,46 @@ final class TimerViewModel: ObservableObject {
         case .rest:
             self.display = "\(self.timerData.currentRestDuration)"
         case .pause:
-            self.display = "yeet"
+            break
         case .invalid:
-            self.display = "yeet"
+            break
         }
         
     }
     
     func onResume() {
         print("Resume button pressed")
+        // Timer logic
         self.currentTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { tm in
-            if self.timerData.workDuration > 0 {
-                self.timerData.workDuration -= 1
-            } else {
-                // if number of rounds is > 0, it's rest
-                self.timerState = self.timerData.numberOfRounds > 0 ? .rest : .invalid
+            
+            // WORK ROUND
+            if self.timerState == .work {
+                self.display = "\(self.timerData.currentWorkDuration)"
+                if self.timerData.currentWorkDuration > 0 {
+                    self.timerData.currentWorkDuration -= 1
+                } else {
+                    self.timerState = self.timerData.currentRound < self.timerData.numberOfRounds ? .rest : .invalid
+                    
+                    // reset duration
+                    self.timerData.currentWorkDuration = self.timerData.workDuration
+                }
+            }
+            
+            // REST ROUND
+            if self.timerState == .rest {
+                self.display = "\(self.timerData.currentRestDuration)"
+                if self.timerData.currentRestDuration > 0 {
+                    self.timerData.currentRestDuration -= 1
+                } else {
+                    self.timerState = self.timerData.currentRound < self.timerData.numberOfRounds ? .work : .invalid
+                    self.timerData.currentRound += 1
+                    
+                    // reset duration
+                    self.timerData.currentRestDuration = self.timerData.currentRestDuration
+                }
             }
         }
-        
+
     }
     
     func onStop() {
