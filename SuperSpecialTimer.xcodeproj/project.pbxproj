@@ -22,6 +22,7 @@
 		160312B02BEC15ED00478E73 /* TimerDetailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160312AF2BEC15ED00478E73 /* TimerDetailButton.swift */; };
 		160312B32BEC354A00478E73 /* MockTimers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160312B22BEC354A00478E73 /* MockTimers.swift */; };
 		160312B52BEC359D00478E73 /* TimerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160312B42BEC359D00478E73 /* TimerListViewModel.swift */; };
+		16A535D82C10E3B600259FC7 /* TimerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535D72C10E3B600259FC7 /* TimerHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		160312AF2BEC15ED00478E73 /* TimerDetailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDetailButton.swift; sourceTree = "<group>"; };
 		160312B22BEC354A00478E73 /* MockTimers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTimers.swift; sourceTree = "<group>"; };
 		160312B42BEC359D00478E73 /* TimerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerListViewModel.swift; sourceTree = "<group>"; };
+		16A535D72C10E3B600259FC7 /* TimerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerHelper.swift; sourceTree = "<group>"; };
+		16A535D92C10E43000259FC7 /* DEVLOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DEVLOG.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,7 @@
 				160312782BE998FC00478E73 /* Assets.xcassets */,
 				1603127A2BE998FC00478E73 /* Preview Content */,
 				160312AC2BEBE96500478E73 /* INFO.md */,
+				16A535D92C10E43000259FC7 /* DEVLOG.md */,
 			);
 			path = SuperSpecialTimer;
 			sourceTree = "<group>";
@@ -181,6 +185,7 @@
 		160312A12BEBE48D00478E73 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				16A535D72C10E3B600259FC7 /* TimerHelper.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 				160312B32BEC354A00478E73 /* MockTimers.swift in Sources */,
 				160312752BE998FA00478E73 /* SuperSpecialTimerApp.swift in Sources */,
 				160312A32BEBE58F00478E73 /* TimerData.swift in Sources */,
+				16A535D82C10E3B600259FC7 /* TimerHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

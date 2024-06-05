@@ -74,7 +74,7 @@ final class TimerViewModel: ObservableObject {
             
             // WORK ROUND
             if self.timerState == .work {
-                self.display = "\(self.timerData.currentWorkDuration)"
+                self.display = TimerHelper.formatTime(seconds: self.timerData.currentWorkDuration)
                 if self.timerData.currentWorkDuration > 0 {
                     self.timerData.currentWorkDuration -= 1
                 } else {
@@ -87,7 +87,7 @@ final class TimerViewModel: ObservableObject {
             
             // REST ROUND
             if self.timerState == .rest {
-                self.display = "\(self.timerData.currentRestDuration)"
+                self.display = TimerHelper.formatTime(seconds: self.timerData.currentRestDuration)
                 if self.timerData.currentRestDuration > 0 {
                     self.timerData.currentRestDuration -= 1
                 } else {
@@ -119,10 +119,10 @@ final class TimerViewModel: ObservableObject {
         // work or rest
         switch self.timerState {
         case .work:
-            self.display = "\(self.timerData.currentWorkDuration)"
+            self.display = TimerHelper.formatTime(seconds: self.timerData.currentWorkDuration)
             self.timerData.currentWorkDuration -= 1
         case .rest:
-            self.display = "\(self.timerData.currentRestDuration)"
+            self.display = TimerHelper.formatTime(seconds: self.timerData.currentRestDuration)
             self.timerData.currentRestDuration -= 1
         case .pause, .ready, .invalid:
             break
@@ -148,7 +148,7 @@ final class TimerViewModel: ObservableObject {
             
             // WORK ROUND
             if self.timerState == .work {
-                self.display = "\(self.timerData.currentWorkDuration)"
+                self.display = TimerHelper.formatTime(seconds: self.timerData.currentWorkDuration)
                 if self.timerData.currentWorkDuration > 0 {
                     self.timerData.currentWorkDuration -= 1
                 } else {
@@ -161,7 +161,7 @@ final class TimerViewModel: ObservableObject {
             
             // REST ROUND
             if self.timerState == .rest {
-                self.display = "\(self.timerData.currentRestDuration)"
+                self.display = TimerHelper.formatTime(seconds: self.timerData.currentRestDuration)
                 if self.timerData.currentRestDuration > 0 {
                     self.timerData.currentRestDuration -= 1
                 } else {
