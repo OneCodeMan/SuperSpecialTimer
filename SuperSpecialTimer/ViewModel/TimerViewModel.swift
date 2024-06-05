@@ -120,8 +120,10 @@ final class TimerViewModel: ObservableObject {
         switch self.timerState {
         case .work:
             self.display = "\(self.timerData.currentWorkDuration)"
+            self.timerData.currentWorkDuration -= 1
         case .rest:
             self.display = "\(self.timerData.currentRestDuration)"
+            self.timerData.currentRestDuration -= 1
         case .pause, .ready, .invalid:
             break
         }

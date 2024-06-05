@@ -10,14 +10,16 @@
 ### TODOs -- May 8, 2024
 - [ ] Parse the seconds into minutes and seconds... 
     - "1:34", "10:34", "10:03"
-    
-- [ ] Add the concept of "sets" or different types of timers.
 - [ ] Implement user defaults
+
+### On Deck
+- [ ] Design a system
 
 ...
 
 ## MID GAME
 - Add sound
+
     
 
 ## LATE GAME
