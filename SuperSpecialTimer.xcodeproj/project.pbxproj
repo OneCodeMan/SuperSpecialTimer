@@ -23,6 +23,9 @@
 		160312B32BEC354A00478E73 /* MockTimers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160312B22BEC354A00478E73 /* MockTimers.swift */; };
 		160312B52BEC359D00478E73 /* TimerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160312B42BEC359D00478E73 /* TimerListViewModel.swift */; };
 		16A535D82C10E3B600259FC7 /* TimerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535D72C10E3B600259FC7 /* TimerHelper.swift */; };
+		16A535DB2C1936B700259FC7 /* AddEditTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535DA2C1936B700259FC7 /* AddEditTimerView.swift */; };
+		16A535DD2C1936C100259FC7 /* AddEditTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535DC2C1936C100259FC7 /* AddEditTimerViewModel.swift */; };
+		16A535DF2C19386D00259FC7 /* CustomAddEditTimerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535DE2C19386D00259FC7 /* CustomAddEditTimerRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,9 @@
 		160312B42BEC359D00478E73 /* TimerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerListViewModel.swift; sourceTree = "<group>"; };
 		16A535D72C10E3B600259FC7 /* TimerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerHelper.swift; sourceTree = "<group>"; };
 		16A535D92C10E43000259FC7 /* DEVLOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DEVLOG.md; sourceTree = "<group>"; };
+		16A535DA2C1936B700259FC7 /* AddEditTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTimerView.swift; sourceTree = "<group>"; };
+		16A535DC2C1936C100259FC7 /* AddEditTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTimerViewModel.swift; sourceTree = "<group>"; };
+		16A535DE2C19386D00259FC7 /* CustomAddEditTimerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAddEditTimerRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,7 @@
 			children = (
 				160312A42BEBE62E00478E73 /* TimerViewModel.swift */,
 				160312B42BEC359D00478E73 /* TimerListViewModel.swift */,
+				16A535DC2C1936C100259FC7 /* AddEditTimerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -167,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				160312AE2BEC15D500478E73 /* Components */,
+				16A535DA2C1936B700259FC7 /* AddEditTimerView.swift */,
 				160312A62BEBE8FE00478E73 /* TimerListView.swift */,
 				160312A82BEBE90800478E73 /* TimerDetailView.swift */,
 				160312AA2BEBE92500478E73 /* AddTimerView.swift */,
@@ -194,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				160312AF2BEC15ED00478E73 /* TimerDetailButton.swift */,
+				16A535DE2C19386D00259FC7 /* CustomAddEditTimerRowView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -336,16 +345,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16A535DB2C1936B700259FC7 /* AddEditTimerView.swift in Sources */,
 				160312A92BEBE90800478E73 /* TimerDetailView.swift in Sources */,
 				160312A72BEBE8FE00478E73 /* TimerListView.swift in Sources */,
 				160312B02BEC15ED00478E73 /* TimerDetailButton.swift in Sources */,
 				160312A52BEBE62E00478E73 /* TimerViewModel.swift in Sources */,
 				160312772BE998FA00478E73 /* ContentView.swift in Sources */,
 				160312AB2BEBE92500478E73 /* AddTimerView.swift in Sources */,
+				16A535DD2C1936C100259FC7 /* AddEditTimerViewModel.swift in Sources */,
 				160312B52BEC359D00478E73 /* TimerListViewModel.swift in Sources */,
 				160312B32BEC354A00478E73 /* MockTimers.swift in Sources */,
 				160312752BE998FA00478E73 /* SuperSpecialTimerApp.swift in Sources */,
 				160312A32BEBE58F00478E73 /* TimerData.swift in Sources */,
+				16A535DF2C19386D00259FC7 /* CustomAddEditTimerRowView.swift in Sources */,
 				16A535D82C10E3B600259FC7 /* TimerHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
