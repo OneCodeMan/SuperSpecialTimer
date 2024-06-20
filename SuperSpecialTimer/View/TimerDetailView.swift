@@ -13,6 +13,7 @@ struct TimerDetailView: View {
         NavigationStack {
             Text("")
                 .toolbar {
+                    // TODO: Coordinator pattern works best man
                     NavigationLink(destination: AddEditTimerView(timerData: timerViewModel.timerData)) {
                         Text("Edit")
                     }

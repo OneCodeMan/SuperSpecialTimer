@@ -10,17 +10,62 @@ import SwiftUI
 // For HIIT timer
 // for different types of timer forms, use ViewBuilder?
 struct AddEditTimerView: View {
+    @ObservedObject var addEditTimerViewModel = AddEditTimerViewModel()
     var timerData: TimerData
+    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                TimerSettingRowView(rowLabel: "Number of Rounds", rowValue: String(timerData.numberOfRounds))
-                TimerSettingRowView(rowLabel: "Work Time", rowValue: String(timerData.workDuration))
-                TimerSettingRowView(rowLabel: "Rest Time", rowValue: String(timerData.restDuration))
+        NavigationView {
+            Form {
+                Group {
+                    HStack {
+                        Text("Title")
+                            .bold()
+                            .padding(.trailing)
+                        Spacer()
+                        TextField(timerData.title, text: $addEditTimerViewModel.title)
+                    }
+                }
+                
+                Group {
+                    HStack {
+                        Text("Rounds")
+                            .bold()
+                            .padding(.trailing)
+                        Spacer()
+                        TextField(String(timerData.numberOfRounds), value: $addEditTimerViewModel.numberOfRounds, formatter: NumberFormatter())
+                    }
+                }
+                
+                Group {
+                    HStack {
+                        Text("Work Duration")
+                            .bold()
+                            .padding(.trailing)
+                        Spacer()
+                        TextField(String(timerData.workDuration), value: $addEditTimerViewModel.workDuration, formatter: NumberFormatter())
+                    }
+                }
+                
+                Group {
+                    HStack {
+                        Text("Rest Duration")
+                            .bold()
+                            .padding(.trailing)
+                        Spacer()
+                        TextField(String(timerData.restDuration), value: $addEditTimerViewModel.restDuration, formatter: NumberFormatter())
+                    }
+                }
+                
+                Button {
+                    addEditTimerViewModel.submitForm()
+                } label: {
+                    Text("Submit")
+                }
             }
         }
+        .navigationTitle("Settings")
     }
 }
 
@@ -35,12 +80,9 @@ struct TimerSettingRowView: View {
                 Text(rowLabel)
                 Spacer()
                 Text(rowValue)
-                Image(systemName: "chevron.right")
-                    .foregroundColor(Color.black)
                 Spacer()
             }
             .padding()
-            .background(.green)
         }
     }
 }

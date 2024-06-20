@@ -7,6 +7,19 @@
 
 import Foundation
 
-final class AddEditTimerViewModel {
+// timer settings go here?
+final class AddEditTimerViewModel: ObservableObject {
+    @Published var title = ""
+    @Published var numberOfRounds = 0
+    @Published var workDuration = 0.0
+    @Published var restDuration = 0.0
+    
+    init() {
+        
+    }
+    
+    func submitForm() {
+        print("title: \(title)\n rounds: \(numberOfRounds) \n work time: \(workDuration) \n rest time: \(restDuration)")
+    }
     
 }
