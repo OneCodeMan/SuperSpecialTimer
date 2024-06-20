@@ -35,6 +35,7 @@ struct AddEditTimerView: View {
                             .padding(.trailing)
                         Spacer()
                         TextField(String(timerData.numberOfRounds), value: $addEditTimerViewModel.numberOfRounds, formatter: NumberFormatter())
+                            .keyboardType(.numberPad)
                     }
                 }
                 
@@ -45,6 +46,7 @@ struct AddEditTimerView: View {
                             .padding(.trailing)
                         Spacer()
                         TextField(String(timerData.workDuration), value: $addEditTimerViewModel.workDuration, formatter: NumberFormatter())
+                            .keyboardType(.numberPad)
                     }
                 }
                 
@@ -55,6 +57,7 @@ struct AddEditTimerView: View {
                             .padding(.trailing)
                         Spacer()
                         TextField(String(timerData.restDuration), value: $addEditTimerViewModel.restDuration, formatter: NumberFormatter())
+                            .keyboardType(.numberPad)
                     }
                 }
                 
