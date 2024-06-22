@@ -10,6 +10,7 @@ import Foundation
 // timer settings go here?
 final class AddEditTimerViewModel: ObservableObject {
     @Published var title = ""
+    @Published var theme: Theme = .bubblegum
     @Published var numberOfRounds = 0
     @Published var workDuration = 0.0
     @Published var restDuration = 0.0
@@ -19,7 +20,16 @@ final class AddEditTimerViewModel: ObservableObject {
     }
     
     func submitForm() {
-        print("title: \(title)\n rounds: \(numberOfRounds) \n work time: \(workDuration) \n rest time: \(restDuration)")
+        print("title: \(title)\n theme: \(theme)\n rounds: \(numberOfRounds) \n work time: \(workDuration) \n rest time: \(restDuration)")
+    }
+    
+    func deleteTimer() {
+        
+    }
+    
+    // if default timer
+    func resetTimerSettings() {
+        
     }
     
 }

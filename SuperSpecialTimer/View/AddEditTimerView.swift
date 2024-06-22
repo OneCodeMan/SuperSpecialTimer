@@ -18,55 +18,86 @@ struct AddEditTimerView: View {
     var body: some View {
         NavigationView {
             Form {
-                Group {
-                    HStack {
-                        Text("Title")
-                            .bold()
-                            .padding(.trailing)
-                        Spacer()
-                        TextField(timerData.title, text: $addEditTimerViewModel.title)
+                Section {
+                    Group {
+                        HStack {
+                            Text("Title")
+                                .bold()
+                                .padding(.trailing)
+                            Spacer()
+                            TextField(timerData.title, text: $addEditTimerViewModel.title)
+                        }
                     }
-                }
-                
-                Group {
-                    HStack {
-                        Text("Rounds")
-                            .bold()
-                            .padding(.trailing)
-                        Spacer()
-                        TextField(String(timerData.numberOfRounds), value: $addEditTimerViewModel.numberOfRounds, formatter: NumberFormatter())
-                            .keyboardType(.numberPad)
+                    
+                    Group {
+                        HStack {
+                            Text("Theme")
+                                .bold()
+                            Picker("Theme", selection: $addEditTimerViewModel.theme) {
+                                ForEach(Theme.allCases, id: \.self) { theme in
+                                    Circle()
+                                        .fill(theme.mainColor)
+                                        .frame(width: 20, height: 20)
+                                }
+                            }
+                            .pickerStyle(.wheel)
+                        }
                     }
-                }
-                
-                Group {
-                    HStack {
-                        Text("Work Duration")
-                            .bold()
-                            .padding(.trailing)
-                        Spacer()
-                        TextField(String(timerData.workDuration), value: $addEditTimerViewModel.workDuration, formatter: NumberFormatter())
-                            .keyboardType(.numberPad)
+                    
+                    Group {
+                        HStack {
+                            Text("Rounds")
+                                .bold()
+                                .padding(.trailing)
+                            Spacer()
+                            TextField(String(timerData.numberOfRounds), value: $addEditTimerViewModel.numberOfRounds, formatter: NumberFormatter())
+                                .keyboardType(.numberPad)
+                        }
                     }
-                }
-                
-                Group {
-                    HStack {
-                        Text("Rest Duration")
-                            .bold()
-                            .padding(.trailing)
-                        Spacer()
-                        TextField(String(timerData.restDuration), value: $addEditTimerViewModel.restDuration, formatter: NumberFormatter())
-                            .keyboardType(.numberPad)
+                    
+                    Group {
+                        HStack {
+                            Text("Work Duration")
+                                .bold()
+                                .padding(.trailing)
+                            Spacer()
+                            TextField(String(timerData.workDuration), value: $addEditTimerViewModel.workDuration, formatter: NumberFormatter())
+                                .keyboardType(.numberPad)
+                        }
                     }
-                }
+                    
+                    Group {
+                        HStack {
+                            Text("Rest Duration")
+                                .bold()
+                                .padding(.trailing)
+                            Spacer()
+                            TextField(String(timerData.restDuration), value: $addEditTimerViewModel.restDuration, formatter: NumberFormatter())
+                                .keyboardType(.numberPad)
+                        }
+                    }
+                    
+                    Button {
+                        addEditTimerViewModel.submitForm()
+                    } label: {
+                        Text("Submit")
+                    }
+                } // section
                 
-                Button {
-                    addEditTimerViewModel.submitForm()
-                } label: {
-                    Text("Submit")
+                Section {
+                    Group {
+                        Button {
+                            addEditTimerViewModel.deleteTimer()
+                        } label: {
+                            Text("Delete Timer")
+                        }
+                        
+                    }
                 }
             }
+        }
+        .onAppear {
+            addEditTimerViewModel.theme = timerData.theme
         }
         .navigationTitle("Settings")
     }

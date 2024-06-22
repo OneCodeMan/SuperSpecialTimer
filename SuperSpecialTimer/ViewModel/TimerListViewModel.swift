@@ -69,4 +69,8 @@ class TimerListViewModel: ObservableObject {
         // self.timers = MockTimers.mockTimers
     }
     
+    func deleteTimer(at index: Int) {
+        // TODO: 
+    }
+    
 }
