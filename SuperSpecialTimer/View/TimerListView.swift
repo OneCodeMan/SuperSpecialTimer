@@ -18,28 +18,33 @@ struct TimerListView: View {
     
     var body: some View {
         NavigationStack {
-            List(timerListViewModel.timers) { tm in
-                // Timer List Item View
-                NavigationLink {
-                    // FIXME: I don't love how we're making the ViewModel in the view
-                    TimerDetailView(timerViewModel: TimerViewModel(timerData: tm))
-                } label: {
-                    TimerListItemView(currentTimer: tm)
-                }
-                .listRowSeparator(.hidden)
-                .listRowBackground(
-                    RoundedRectangle(cornerRadius: 5)
-                        .background(.clear)
-                        .foregroundColor(tm.theme.mainColor)
-                        .padding(
-                            EdgeInsets(
-                                top: 2,
-                                leading: 10,
-                                bottom: 2,
-                                trailing: 10
+            List {
+                ForEach(timerListViewModel.timers) { tm in
+                    // Timer List Item View
+                    NavigationLink {
+                        // FIXME: I don't love how we're making the ViewModel in the view
+                        TimerDetailView(timerViewModel: TimerViewModel(timerData: tm))
+                    } label: {
+                        TimerListItemView(currentTimer: tm)
+                    }
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(
+                        RoundedRectangle(cornerRadius: 5)
+                            .background(.clear)
+                            .foregroundColor(tm.theme.mainColor)
+                            .padding(
+                                EdgeInsets(
+                                    top: 2,
+                                    leading: 10,
+                                    bottom: 2,
+                                    trailing: 10
+                                )
                             )
-                        )
-                )
+                    )
+                }
+                .onDelete { idx in
+                    timerListViewModel.timers.remove(atOffsets: idx)
+                }
             }
             .navigationTitle("Timers")
             .navigationBarTitleDisplayMode(.large)
