@@ -28,6 +28,7 @@
 		16A535DF2C19386D00259FC7 /* CustomAddEditTimerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535DE2C19386D00259FC7 /* CustomAddEditTimerRowView.swift */; };
 		16A535E12C2225F800259FC7 /* TimerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535E02C2225F800259FC7 /* TimerSetting.swift */; };
 		16A535E32C275A1900259FC7 /* UserDefaults+KeyValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535E22C275A1900259FC7 /* UserDefaults+KeyValidation.swift */; };
+		16A535E52C27642800259FC7 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535E42C27642800259FC7 /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		16A535DE2C19386D00259FC7 /* CustomAddEditTimerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAddEditTimerRowView.swift; sourceTree = "<group>"; };
 		16A535E02C2225F800259FC7 /* TimerSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSetting.swift; sourceTree = "<group>"; };
 		16A535E22C275A1900259FC7 /* UserDefaults+KeyValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+KeyValidation.swift"; sourceTree = "<group>"; };
+		16A535E42C27642800259FC7 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			children = (
 				160312A22BEBE58F00478E73 /* TimerData.swift */,
 				16A535E02C2225F800259FC7 /* TimerSetting.swift */,
+				16A535E42C27642800259FC7 /* Theme.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				16A535DD2C1936C100259FC7 /* AddEditTimerViewModel.swift in Sources */,
 				160312B52BEC359D00478E73 /* TimerListViewModel.swift in Sources */,
 				160312B32BEC354A00478E73 /* MockTimers.swift in Sources */,
+				16A535E52C27642800259FC7 /* Theme.swift in Sources */,
 				160312752BE998FA00478E73 /* SuperSpecialTimerApp.swift in Sources */,
 				160312A32BEBE58F00478E73 /* TimerData.swift in Sources */,
 				16A535DF2C19386D00259FC7 /* CustomAddEditTimerRowView.swift in Sources */,

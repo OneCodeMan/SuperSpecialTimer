@@ -12,6 +12,8 @@ import Foundation
 struct TimerData: Identifiable {
     let id = UUID()
     
+    var theme: Theme = Theme.allCases.randomElement() ?? .indigo1
+    
     // user related
     var title: String
     var lastUsed: Date
@@ -92,3 +94,4 @@ enum TimerState: CustomStringConvertible {
         }
     }
 }
+

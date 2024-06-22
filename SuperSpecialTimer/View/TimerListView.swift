@@ -26,6 +26,20 @@ struct TimerListView: View {
                 } label: {
                     TimerListItemView(currentTimer: tm)
                 }
+                .listRowSeparator(.hidden)
+                .listRowBackground(
+                    RoundedRectangle(cornerRadius: 5)
+                        .background(.clear)
+                        .foregroundColor(tm.theme.mainColor)
+                        .padding(
+                            EdgeInsets(
+                                top: 2,
+                                leading: 10,
+                                bottom: 2,
+                                trailing: 10
+                            )
+                        )
+                )
             }
             .navigationTitle("Timers")
             .navigationBarTitleDisplayMode(.large)
@@ -33,12 +47,22 @@ struct TimerListView: View {
     }
 }
 
-// MOVE THIS TO ITS OWN FILE.
+// TODO: MOVE THIS TO ITS OWN FILE.
 struct TimerListItemView: View {
     let currentTimer: TimerData
     var body: some View {
         VStack {
             Text(currentTimer.title)
+                .foregroundColor(currentTimer.theme.accentColor)
+                .font(.headline)
+                .padding(
+                    EdgeInsets(
+                        top: 25,
+                        leading: 5,
+                        bottom: 25,
+                        trailing: 5
+                    )
+                )
         }
         .padding()
     }
