@@ -30,7 +30,7 @@ struct TimerData: Identifiable {
     var numberOfRounds: Int // if infinity, let it go for a while
     var currentRound: Int
     
-    init(title: String = "Default Title", workDuration: Int, restDuration: Int, breakDuration: Int, numberOfRounds: Int) {
+    init(title: String = "Default Title", workDuration: Int, restDuration: Int, breakDuration: Int = -1, numberOfRounds: Int) {
         // user defined
         self.title = title
         self.workDuration = workDuration
