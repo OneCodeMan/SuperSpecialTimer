@@ -32,6 +32,23 @@ struct TimerData: Identifiable {
     var numberOfRounds: Int // if infinity, let it go for a while
     var currentRound: Int
     
+    init(title: String = "Default Title", theme: Theme = .bubblegum, workDuration: Int, restDuration: Int, breakDuration: Int = -1, numberOfRounds: Int) {
+        // user defined
+        self.title = title
+        self.workDuration = workDuration
+        self.restDuration = restDuration
+        self.breakDuration = breakDuration
+        self.numberOfRounds = numberOfRounds
+        self.theme = theme
+        
+        // internal
+        self.lastUsed = Date.now
+        self.currentRound = 1
+        self.currentWorkDuration = self.workDuration
+        self.currentRestDuration = self.restDuration
+        self.currentBreakDuration = self.breakDuration
+    }
+    
     init(title: String = "Default Title", workDuration: Int, restDuration: Int, breakDuration: Int = -1, numberOfRounds: Int) {
         // user defined
         self.title = title
@@ -39,6 +56,7 @@ struct TimerData: Identifiable {
         self.restDuration = restDuration
         self.breakDuration = breakDuration
         self.numberOfRounds = numberOfRounds
+        self.theme = Theme.allCases.randomElement() ?? .oxblood
         
         // internal
         self.lastUsed = Date.now

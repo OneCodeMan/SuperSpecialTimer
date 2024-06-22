@@ -52,7 +52,7 @@ enum Theme: String, CaseIterable, Identifiable {
     }
 
     var name: String {
-        rawValue.capitalized
+        rawValue
     }
 
     var id: String {
