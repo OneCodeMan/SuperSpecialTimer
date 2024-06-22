@@ -1,5 +1,31 @@
 #  INFO
 
+## TODOS -- June 22, 2024
+- [ ] User can edit a timer and save to user defaults
+- [ ] User can delete a timer
+- [ ] Do something about default timers.
+
+Later TODOs:
+- Smooth user flow
+- Different Layouts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+....
+
 ## Notes
 - Focused on the artistic/design side. The user experience side. The juice.
 ...
