@@ -32,7 +32,10 @@ struct TimerData: Identifiable {
     var numberOfRounds: Int // if infinity, let it go for a while
     var currentRound: Int
     
-    init(title: String = "Default Title", theme: Theme = .bubblegum, workDuration: Int, restDuration: Int, breakDuration: Int = -1, numberOfRounds: Int) {
+    // timer's index in array
+    var index: Int
+    
+    init(title: String = "Default Title", theme: Theme = .bubblegum, workDuration: Int, restDuration: Int, breakDuration: Int = -1, numberOfRounds: Int, index: Int = 0) {
         // user defined
         self.title = title
         self.workDuration = workDuration
@@ -47,9 +50,10 @@ struct TimerData: Identifiable {
         self.currentWorkDuration = self.workDuration
         self.currentRestDuration = self.restDuration
         self.currentBreakDuration = self.breakDuration
+        self.index = index
     }
     
-    init(title: String = "Default Title", workDuration: Int, restDuration: Int, breakDuration: Int = -1, numberOfRounds: Int) {
+    init(title: String = "Default Title", workDuration: Int, restDuration: Int, breakDuration: Int = -1, numberOfRounds: Int, index: Int = 0) {
         // user defined
         self.title = title
         self.workDuration = workDuration
@@ -64,6 +68,7 @@ struct TimerData: Identifiable {
         self.currentWorkDuration = self.workDuration
         self.currentRestDuration = self.restDuration
         self.currentBreakDuration = self.breakDuration
+        self.index = index
     }
     
     // default init
@@ -79,6 +84,7 @@ struct TimerData: Identifiable {
         self.currentWorkDuration = self.workDuration
         self.currentRestDuration = self.restDuration
         self.currentBreakDuration = self.breakDuration
+        self.index = 0
     }
     
     mutating func reset() {

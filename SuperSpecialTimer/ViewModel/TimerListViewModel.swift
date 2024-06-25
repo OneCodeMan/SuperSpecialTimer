@@ -34,7 +34,7 @@ class TimerListViewModel: ObservableObject {
                     let timerTheme = Theme(rawValue: timerThemeString) ?? .orange1
                     print("timer theme: \(timerTheme)")
                     
-                    let dictToData = TimerData(title: td["title"] ?? "", theme: timerTheme, workDuration: Int(td["work"] ?? "") ?? 0, restDuration: Int(td["rest"] ?? "") ?? 0, numberOfRounds: Int(td["rounds"] ?? "") ?? 0)
+                    let dictToData = TimerData(title: td["title"] ?? "", theme: timerTheme, workDuration: Int(td["work"] ?? "") ?? 0, restDuration: Int(td["rest"] ?? "") ?? 0, numberOfRounds: Int(td["rounds"] ?? "") ?? 0, index: Int(td["index"] ?? "") ?? 0)
                     
                     print(dictToData)
                     self.timers.append(dictToData)
@@ -54,7 +54,8 @@ class TimerListViewModel: ObservableObject {
                                  "theme": td.theme.name,
                                  "rounds": "\(td.numberOfRounds)",
                                  "work": "\(td.workDuration)",
-                                 "rest": "\(td.restDuration)"]
+                                 "rest": "\(td.restDuration)",
+                                 "index": "\(td.index)"]
                 timersArray.append(timerDict)
             }
             

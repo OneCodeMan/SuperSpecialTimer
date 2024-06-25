@@ -76,7 +76,7 @@ struct AddEditTimerView: View {
                                 .keyboardType(.numberPad)
                         }
                     }
-                    
+                    // TODO: custom button
                     Button {
                         addEditTimerViewModel.submitForm()
                     } label: {
@@ -97,7 +97,9 @@ struct AddEditTimerView: View {
             }
         }
         .onAppear {
+            // TODO: terrible
             addEditTimerViewModel.theme = timerData.theme
+            addEditTimerViewModel.index = timerData.index
         }
         .navigationTitle("Settings")
     }

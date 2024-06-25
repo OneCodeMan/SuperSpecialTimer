@@ -21,8 +21,8 @@ class MockTimers {
     ]
     
     static var initialTimers = [
-        TimerData(title: "Pomodoro", workDuration: 800, restDuration: 500, numberOfRounds: 5),
-        TimerData(title: "HIIT", workDuration: 20, restDuration: 10, breakDuration: 60, numberOfRounds: 12),
-        TimerData(title: "Pomodoro2", workDuration: 900, restDuration: -1, numberOfRounds: 5),
+        TimerData(title: "Pomodoro", workDuration: 800, restDuration: 500, numberOfRounds: 5, index: 0),
+        TimerData(title: "HIIT", workDuration: 20, restDuration: 10, breakDuration: 60, numberOfRounds: 12, index: 1),
+        TimerData(title: "Pomodoro2", workDuration: 900, restDuration: -1, numberOfRounds: 5, index: 2),
     ]
 }
