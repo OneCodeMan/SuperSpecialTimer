@@ -60,10 +60,16 @@ final class TimerViewModel: ObservableObject {
     }
     
     // TODO: Get it from user defaults then convert from dict to TimerData
-    func fetchTimerData() {
-        
-        let fetchedData = TimerData()
-        self.timerData = fetchedData
+    func fetchTimerData(from index: Int) {
+        if let timerDictsFromUserDefaults = UserDefaults.standard.array(forKey: "timers") as? [[String: String]] {
+            let upAr = timerDictsFromUserDefaults[index]
+            let timerThemeString = upAr["theme"] ?? "NIL!!!"
+            print("timer theme string: \(timerThemeString)")
+            
+            let timerTheme = Theme(rawValue: timerThemeString) ?? .orange1
+            let updatedTimerData = TimerData(title: upAr["title"] ?? "", theme: timerTheme, workDuration: Int(upAr["work"] ?? "") ?? 0, restDuration: Int(upAr["rest"] ?? "") ?? 0, numberOfRounds: Int(upAr["rounds"] ?? "") ?? 0)
+            self.timerData = updatedTimerData
+        }
     }
     
     func onPlay() {

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TimerDetailView: View {
     @StateObject var timerViewModel = TimerViewModel()
+    @State var index: Int = 0
     var body: some View {
         NavigationStack {
             Text("")
@@ -75,9 +76,9 @@ struct TimerDetailView: View {
             }
         }
         .onAppear {
+            self.index = timerViewModel.timerData.index
             print("timerdetailviwr appeared")
-            // fetch/re-fetch data
-            timerViewModel.fetchTimerData()
+            timerViewModel.fetchTimerData(from: index)
         }
     }
 }
