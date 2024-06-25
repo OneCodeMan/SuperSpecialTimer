@@ -39,6 +39,8 @@ final class AddEditTimerViewModel: ObservableObject {
             userDefaultsTimerDataCopy[index] = updatedTdToDict
             
             userDefaults.set(userDefaultsTimerDataCopy, forKey: "timers")
+            
+            // DISMISS AND GO BACK TO LIST VIEW
         } else {
             print("submitForm error!!")
         }

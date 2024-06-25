@@ -1,5 +1,10 @@
 #  Super Special Timer DevLog
 
+
+## June 25, 2024
+view dismiss itself so after form submission we back to homepage
+https://www.hackingwithswift.com/quick-start/swiftui/how-to-make-a-view-dismiss-itself
+
 Helpful for the forms:
 https://serialcoder.dev/text-tutorials/swiftui/creating-forms-in-swiftui/
 

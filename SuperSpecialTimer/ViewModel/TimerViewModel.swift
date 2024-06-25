@@ -54,11 +54,16 @@ final class TimerViewModel: ObservableObject {
     
     // TODO: for testing//for now
     init(timerData: TimerData = TimerData()) {
+        print("timer data init() set timerdata and state")
         self.timerData = timerData
+        self.timerState = .ready
     }
     
-    init() {
-        self.timerState = .ready
+    // TODO: Get it from user defaults then convert from dict to TimerData
+    func fetchTimerData() {
+        
+        let fetchedData = TimerData()
+        self.timerData = fetchedData
     }
     
     func onPlay() {

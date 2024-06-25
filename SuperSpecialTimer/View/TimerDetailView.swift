@@ -74,6 +74,11 @@ struct TimerDetailView: View {
                 
             }
         }
+        .onAppear {
+            print("timerdetailviwr appeared")
+            // fetch/re-fetch data
+            timerViewModel.fetchTimerData()
+        }
     }
 }
 

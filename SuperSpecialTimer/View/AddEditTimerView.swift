@@ -78,6 +78,7 @@ struct AddEditTimerView: View {
                     }
                     // TODO: custom button
                     Button {
+                        dismiss()
                         addEditTimerViewModel.submitForm()
                     } label: {
                         Text("Submit")
