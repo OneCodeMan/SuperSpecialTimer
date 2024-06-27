@@ -9,13 +9,13 @@ import SwiftUI
 
 struct TimerDetailView: View {
     @StateObject var timerViewModel = TimerViewModel()
-    @State var index: Int = 0
+    @State var index: Int
     var body: some View {
         NavigationStack {
             Text("")
                 .toolbar {
                     // TODO: Coordinator pattern works best man
-                    NavigationLink(destination: AddEditTimerView(timerData: timerViewModel.timerData)) {
+                    NavigationLink(destination: AddEditTimerView(timerData: timerViewModel.timerData, timerIndex: index)) {
                         Text("Edit")
                     }
                 }
@@ -77,12 +77,12 @@ struct TimerDetailView: View {
         }
         .onAppear {
             self.index = timerViewModel.timerData.index
-            print("timerdetailviwr appeared")
+            print("timerdetailviwr appeared, index is \(self.index)")
             timerViewModel.fetchTimerData(from: index)
         }
     }
 }
 
-#Preview {
-    TimerDetailView()
-}
+//#Preview {
+//    TimerDetailView()
+//}

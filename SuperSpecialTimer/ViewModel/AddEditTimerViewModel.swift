@@ -36,7 +36,7 @@ final class AddEditTimerViewModel: ObservableObject {
                                    "rest": "\(updatedTimerData.restDuration)",
                                    "index": "\(updatedTimerData.index)"]
             
-            userDefaultsTimerDataCopy[index] = updatedTdToDict
+            userDefaultsTimerDataCopy[updatedTimerData.index] = updatedTdToDict
             
             userDefaults.set(userDefaultsTimerDataCopy, forKey: "timers")
             

@@ -14,17 +14,19 @@ class TimerListViewModel: ObservableObject {
     
     init(timers: [TimerData] = []) {
         self.timers = timers
-        // UserDefaults.standard.removeObject(forKey: "timers")
+//       UserDefaults.standard.removeObject(forKey: "timers")
         fetchTimers()
     }
     
     func fetchTimers() {
+        self.timers = []
         let defaults = UserDefaults.standard
 
         if UserDefaultsHelper.isKeyPresentInUserDefaults(key: "timers") {
             print("we have timers, gonna retrieve them now...")
             if let timerDictsFromUserDefaults = defaults.array(forKey: "timers") as? [[String: String]]  {
 
+                var timersUnordered = [TimerData]()
                 for td in timerDictsFromUserDefaults {
                     print("dict: \(td)\n")
                     // TODO: CODE SMELL
@@ -34,10 +36,20 @@ class TimerListViewModel: ObservableObject {
                     let timerTheme = Theme(rawValue: timerThemeString) ?? .orange1
                     print("timer theme: \(timerTheme)")
                     
-                    let dictToData = TimerData(title: td["title"] ?? "", theme: timerTheme, workDuration: Int(td["work"] ?? "") ?? 0, restDuration: Int(td["rest"] ?? "") ?? 0, numberOfRounds: Int(td["rounds"] ?? "") ?? 0, index: Int(td["index"] ?? "") ?? 0)
+                    let timerIndex = Int(td["index"] ?? "") ?? 0
+                    print("timer index: \(timerIndex)")
+                    
+                    let dictToData = TimerData(title: td["title"] ?? "", theme: timerTheme, workDuration: Int(td["work"] ?? "") ?? 0, restDuration: Int(td["rest"] ?? "") ?? 0, numberOfRounds: Int(td["rounds"] ?? "") ?? 0, index: timerIndex)
                     
                     print(dictToData)
-                    self.timers.append(dictToData)
+                    timersUnordered.append(dictToData)
+                    
+                    self.timers = timersUnordered.sorted { $0.index < $1.index }
+                    // the indexed version
+                    
+                    
+                    print("FETCHED TIMERS IN THE END: \(self.timers.count) elements\n \(self.timers)")
+                    
                 }
             } else {
                 // TODO: throw error

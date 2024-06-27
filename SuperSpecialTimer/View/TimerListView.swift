@@ -23,7 +23,7 @@ struct TimerListView: View {
                     // Timer List Item View
                     NavigationLink {
                         // FIXME: I don't love how we're making the ViewModel in the view
-                        TimerDetailView(timerViewModel: TimerViewModel(timerData: tm))
+                        TimerDetailView(timerViewModel: TimerViewModel(timerData: tm), index: tm.index)
                     } label: {
                         TimerListItemView(currentTimer: tm)
                     }
@@ -48,6 +48,10 @@ struct TimerListView: View {
             }
             .navigationTitle("Timers")
             .navigationBarTitleDisplayMode(.large)
+            .onAppear {
+                print("list view appeared")
+                timerListViewModel.fetchTimers()
+            }
         }
     }
 }

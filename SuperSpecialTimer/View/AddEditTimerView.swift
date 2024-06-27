@@ -11,7 +11,8 @@ import SwiftUI
 // for different types of timer forms, use ViewBuilder?
 struct AddEditTimerView: View {
     @ObservedObject var addEditTimerViewModel = AddEditTimerViewModel()
-    var timerData: TimerData
+    @State var timerData: TimerData
+    @State var timerIndex: Int = 0
     
     @Environment(\.dismiss) var dismiss
     
@@ -96,11 +97,11 @@ struct AddEditTimerView: View {
                     }
                 }
             }
-        }
-        .onAppear {
-            // TODO: terrible
-            addEditTimerViewModel.theme = timerData.theme
-            addEditTimerViewModel.index = timerData.index
+            .onAppear {
+                // TODO: terrible
+                addEditTimerViewModel.theme = timerData.theme
+                addEditTimerViewModel.index = timerIndex
+            }
         }
         .navigationTitle("Settings")
     }

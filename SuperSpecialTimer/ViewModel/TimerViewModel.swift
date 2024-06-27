@@ -67,7 +67,7 @@ final class TimerViewModel: ObservableObject {
             print("timer theme string: \(timerThemeString)")
             
             let timerTheme = Theme(rawValue: timerThemeString) ?? .orange1
-            let updatedTimerData = TimerData(title: upAr["title"] ?? "", theme: timerTheme, workDuration: Int(upAr["work"] ?? "") ?? 0, restDuration: Int(upAr["rest"] ?? "") ?? 0, numberOfRounds: Int(upAr["rounds"] ?? "") ?? 0)
+            let updatedTimerData = TimerData(title: upAr["title"] ?? "", theme: timerTheme, workDuration: Int(upAr["work"] ?? "") ?? 0, restDuration: Int(upAr["rest"] ?? "") ?? 0, numberOfRounds: Int(upAr["rounds"] ?? "") ?? 0, index: index)
             self.timerData = updatedTimerData
         }
     }
