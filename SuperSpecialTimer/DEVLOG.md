@@ -1,5 +1,10 @@
 #  Super Special Timer DevLog
 
+## july 1, 2024
+Happy Canada Day!!
+For handling text fields:
+https://chatgpt.com/share/2f1c375f-99c8-42ac-9946-609616244b69
+
 
 ## June 25, 2024
 view dismiss itself so after form submission we back to homepage
