@@ -31,7 +31,16 @@
  
  */
 
+/**
+ Colour states TimerState???
+ uhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+- salmon pink for break
+ - grey for pause
+ - green for go
+ */
+
 import Foundation
+import SwiftUI
 
 final class TimerViewModel: ObservableObject {
     @Published var timerData: TimerData = TimerData()
@@ -48,6 +57,8 @@ final class TimerViewModel: ObservableObject {
     @Published var display: String = "0:00"
     @Published var workDurationInfo: String = "0:00"
     @Published var restDurationInfo: String = "0:00"
+    @Published var roundInfo: String = ""
+    @Published var stateColourInfo: Color = .red
     
     // TODO: for final
     func initFromUserDefaults(timerData: TimerData = TimerData()) {
@@ -65,6 +76,8 @@ final class TimerViewModel: ObservableObject {
         self.display = TimerHelper.formatTime(seconds: self.timerData.workDuration)
         self.workDurationInfo = TimerHelper.formatTime(seconds: self.timerData.workDuration)
         self.restDurationInfo = TimerHelper.formatTime(seconds: self.timerData.restDuration)
+        self.roundInfo = "\(self.timerData.numberOfRounds) Rounds"
+        self.stateColourInfo = self.timerData.theme.mainColor
     }
     
     // TODO: Get it from user defaults then convert from dict to TimerData
@@ -86,6 +99,7 @@ final class TimerViewModel: ObservableObject {
         // if it's our initial press, set timerState to .work
         if self.timerState == .ready {
             self.timerState = .work
+            updateColourInfo()
         }
         
         // Timer logic
@@ -98,6 +112,7 @@ final class TimerViewModel: ObservableObject {
                     self.timerData.currentWorkDuration -= 1
                 } else {
                     self.timerState = self.timerData.currentRound < self.timerData.numberOfRounds ? .rest : .invalid
+                    self.updateColourInfo()
                     
                     // reset duration
                     self.timerData.currentWorkDuration = self.timerData.workDuration
@@ -111,6 +126,7 @@ final class TimerViewModel: ObservableObject {
                     self.timerData.currentRestDuration -= 1
                 } else {
                     self.timerState = self.timerData.currentRound < self.timerData.numberOfRounds ? .work : .invalid
+                    self.updateColourInfo()
                     self.timerData.currentRound += 1
                     
                     if self.timerState == .invalid {
@@ -149,6 +165,7 @@ final class TimerViewModel: ObservableObject {
         
         // then change the state to paused
         self.timerState = .pause
+        self.updateColourInfo()
         
     }
     
@@ -161,6 +178,7 @@ final class TimerViewModel: ObservableObject {
         
         // go back to the state we were in before the pause.
         self.timerState = self.stateBeforeLastPause
+        self.updateColourInfo()
         
         // Timer logic
         self.currentTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { tm in
@@ -172,6 +190,7 @@ final class TimerViewModel: ObservableObject {
                     self.timerData.currentWorkDuration -= 1
                 } else {
                     self.timerState = self.timerData.currentRound < self.timerData.numberOfRounds ? .rest : .invalid
+                    self.updateColourInfo()
                     
                     // reset duration
                     self.timerData.currentWorkDuration = self.timerData.workDuration
@@ -185,6 +204,7 @@ final class TimerViewModel: ObservableObject {
                     self.timerData.currentRestDuration -= 1
                 } else {
                     self.timerState = self.timerData.currentRound < self.timerData.numberOfRounds ? .work : .invalid
+                    self.updateColourInfo()
                     
                     if self.timerState == .invalid {
                         self.onStop()
@@ -211,6 +231,22 @@ final class TimerViewModel: ObservableObject {
         
         // update UI
         self.timerState = .ready
+        self.updateColourInfo()
         self.display = "DONE"
+    }
+    
+    func updateColourInfo() {
+        switch self.timerState {
+        case .ready:
+            self.stateColourInfo = timerData.theme.mainColor
+        case .work:
+            self.stateColourInfo = .green //todo
+        case .rest:
+            self.stateColourInfo = .red //todo
+        case .pause:
+            self.stateColourInfo = .gray //todo
+        case .invalid:
+            self.stateColourInfo = timerData.theme.mainColor
+        }
     }
 }

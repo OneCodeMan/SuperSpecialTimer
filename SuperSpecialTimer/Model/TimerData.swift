@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 // MARK: timer data
 // what we'll display on TimerListView
@@ -97,7 +98,7 @@ struct TimerData: Identifiable {
 }
 
 // MARK: timer state
-enum TimerState: CustomStringConvertible {
+enum TimerState: CustomStringConvertible, Equatable {
     case ready
     case work
     case rest
