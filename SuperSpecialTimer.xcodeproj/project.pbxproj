@@ -23,6 +23,7 @@
 		160312B32BEC354A00478E73 /* MockTimers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160312B22BEC354A00478E73 /* MockTimers.swift */; };
 		160312B52BEC359D00478E73 /* TimerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160312B42BEC359D00478E73 /* TimerListViewModel.swift */; };
 		16551C3A2C32E2E000372B41 /* TimerTypeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16551C392C32E2E000372B41 /* TimerTypeSelectView.swift */; };
+		16551C3C2C331F7600372B41 /* TimerFormPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16551C3B2C331F7600372B41 /* TimerFormPickerView.swift */; };
 		16A535D82C10E3B600259FC7 /* TimerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535D72C10E3B600259FC7 /* TimerHelper.swift */; };
 		16A535DB2C1936B700259FC7 /* AddEditTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535DA2C1936B700259FC7 /* AddEditTimerView.swift */; };
 		16A535DD2C1936C100259FC7 /* AddEditTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535DC2C1936C100259FC7 /* AddEditTimerViewModel.swift */; };
@@ -70,6 +71,7 @@
 		160312B22BEC354A00478E73 /* MockTimers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTimers.swift; sourceTree = "<group>"; };
 		160312B42BEC359D00478E73 /* TimerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerListViewModel.swift; sourceTree = "<group>"; };
 		16551C392C32E2E000372B41 /* TimerTypeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTypeSelectView.swift; sourceTree = "<group>"; };
+		16551C3B2C331F7600372B41 /* TimerFormPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerFormPickerView.swift; sourceTree = "<group>"; };
 		16A535D72C10E3B600259FC7 /* TimerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerHelper.swift; sourceTree = "<group>"; };
 		16A535D92C10E43000259FC7 /* DEVLOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DEVLOG.md; sourceTree = "<group>"; };
 		16A535DA2C1936B700259FC7 /* AddEditTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTimerView.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			children = (
 				160312AF2BEC15ED00478E73 /* TimerDetailButton.swift */,
 				16A535DE2C19386D00259FC7 /* CustomAddEditTimerRowView.swift */,
+				16551C3B2C331F7600372B41 /* TimerFormPickerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16551C3C2C331F7600372B41 /* TimerFormPickerView.swift in Sources */,
 				16A535DB2C1936B700259FC7 /* AddEditTimerView.swift in Sources */,
 				160312A92BEBE90800478E73 /* TimerDetailView.swift in Sources */,
 				16A535E32C275A1900259FC7 /* UserDefaults+KeyValidation.swift in Sources */,
