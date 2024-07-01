@@ -14,6 +14,9 @@ struct AddEditTimerView: View {
     @State var timerData: TimerData
     @State var timerIndex: Int = 0
     
+    @State var isOnThemeSelect = false
+    @State private var scale: CGFloat = 1.5
+    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -31,17 +34,28 @@ struct AddEditTimerView: View {
                     }
                     
                     Group {
-                        HStack {
-                            Text("Theme")
-                                .bold()
-                            Picker("Theme", selection: $addEditTimerViewModel.theme) {
-                                ForEach(Theme.allCases, id: \.self) { theme in
-                                    Circle()
-                                        .fill(theme.mainColor)
-                                        .frame(width: 20, height: 20)
+                        VStack {
+                            HStack {
+                                Text("Theme")
+                                    .bold()
+                                Picker("Theme", selection: $addEditTimerViewModel.theme) {
+                                    ForEach(Theme.allCases, id: \.self) { theme in
+                                        Circle()
+                                            .fill(theme.mainColor)
+                                            .frame(width: 20, height: 20)
+                                            .tag(theme)
+                                    }
+                                }
+                                .pickerStyle(.wheel)
+                                .frame(height: 120)
+                                .onChange(of: addEditTimerViewModel.theme) { oldValue, newValue in
+                                    print("old val: \(oldValue), new val: \(newValue)")
                                 }
                             }
-                            .pickerStyle(.wheel)
+                            Text(addEditTimerViewModel.theme.name)
+                                .foregroundStyle(addEditTimerViewModel.theme.mainColor)
+                                .italic()
+                                .font(.footnote)
                         }
                     }
                     
