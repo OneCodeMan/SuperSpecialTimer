@@ -10,6 +10,7 @@ import SwiftUI
 
 // timer settings go here?
 final class AddEditTimerViewModel: ObservableObject {
+    @State var timerData: TimerData = TimerData()
     @Published var title = ""
     @Published var theme: Theme = .bubblegum
     @Published var numberOfRounds = 0
@@ -17,7 +18,18 @@ final class AddEditTimerViewModel: ObservableObject {
     @Published var restDuration = 0
     @Published var index: Int = 0
     
-    init() { }
+    init(timerData td: TimerData = TimerData()) {
+        print("AddEdit Timer INIT!!")
+    }
+    
+    func setTimerData(timerData td: TimerData) {
+        self.timerData = td
+        self.title = td.title
+        self.theme = td.theme
+        self.numberOfRounds = td.numberOfRounds
+        self.workDuration = td.workDuration
+        self.restDuration = td.restDuration
+    }
     
     func submitForm() {
         print("title: \(title)\n theme: \(theme)\n rounds: \(numberOfRounds) \n work time: \(workDuration) \n rest time: \(restDuration)")

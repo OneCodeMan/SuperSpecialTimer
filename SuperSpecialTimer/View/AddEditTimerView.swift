@@ -99,7 +99,7 @@ struct AddEditTimerView: View {
             }
             .onAppear {
                 // TODO: terrible
-                addEditTimerViewModel.theme = timerData.theme
+                addEditTimerViewModel.setTimerData(timerData: timerData)
                 addEditTimerViewModel.index = timerIndex
             }
         }
