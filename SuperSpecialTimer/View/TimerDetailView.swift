@@ -41,6 +41,7 @@ struct TimerDetailView: View {
                     
                     Text("\(timerViewModel.display)")
                         .font(.system(size: 100, weight: .heavy, design: .serif))
+                        .padding()
                     
                     Spacer()
                     
@@ -62,7 +63,7 @@ struct TimerDetailView: View {
                      stop --> for now, initial state or nothing.
                      */
                     HStack {
-                        
+                        // TODO: could we put this logic in viewmodel?
                         if timerViewModel.timerState == .ready {
                             
                             TimerDetailButton(iconString: "play.circle") {
@@ -93,6 +94,7 @@ struct TimerDetailView: View {
                     Spacer()
                     
                 }
+                .navigationBarBackButtonHidden(timerViewModel.timerState != .ready)
                 .onAppear {
                     self.index = timerViewModel.timerData.index
                     print("timerdetailviwr appeared, index is \(self.index)")

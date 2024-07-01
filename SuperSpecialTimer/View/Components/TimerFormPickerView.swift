@@ -7,8 +7,14 @@
 
 import SwiftUI
 
+// Generic
 struct TimerFormPickerView: UIViewRepresentable {
-    var data: [[String]]
+    var data: [[String]] = [
+        Array(0...59).map { "\($0)" },
+        Array(0...59).map { "\($0)" }
+    ]
+    
+    // bind this to something
     @Binding var selections: [Int]
     
     //makeCoordinator()
@@ -65,19 +71,29 @@ struct TimerFormPickerView: UIViewRepresentable {
     }
 }
 
-import SwiftUI
+// MARK: usage demo
 
 struct TimerFormPickerViewDemo: View {
+    @State private var selections: [Int] = [0, 0] // which row is initially selected
+
+    var body: some View {
+        VStack {
+            TimerFormPickerView(selections: self.$selections)
+        } //VStack
+    }
+}
+
+// MARK: Rounds
+struct TimerFormRoundsPickerView: View {
+    @State private var selections: [Int] = [0]
     private let data: [[String]] = [
-        Array(0...59).map { "\($0)" },
-        Array(0...59).map { "\($0)" }
+        Array(1...30).map { "\($0)" },
     ]
-    
-    @State private var selections: [Int] = [0, 50] // which row is initially selected
 
     var body: some View {
         VStack {
             TimerFormPickerView(data: self.data, selections: self.$selections)
         } //VStack
     }
+    
 }
