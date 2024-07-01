@@ -21,12 +21,16 @@ struct TimerDetailButton: View {
         Button {
             action()
         } label: {
-            Image(systemName: iconString)
-                .padding(5)
+            VStack {
+                Image(systemName: iconString)
+                    .resizable()
+                   .scaledToFit()
+                   .frame(width: 100, height: 100)
+            }
+            .clipShape(Circle())
+            .frame(width: 125, height: 125)
         }
-        .frame(width: 80, height: 80)
         .tint(.black)
-        .buttonBorderShape(.circle)
     }
 }
 

@@ -211,6 +211,6 @@ final class TimerViewModel: ObservableObject {
         
         // update UI
         self.timerState = .ready
-        self.display = "FINISHEDDD"
+        self.display = "DONE"
     }
 }
