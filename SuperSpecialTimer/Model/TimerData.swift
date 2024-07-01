@@ -19,7 +19,7 @@ struct TimerData: Identifiable {
     var lastUsed: Date
     
     // functionality
-    var workDuration: Int // on, seconds
+    var workDuration: Int
     var currentWorkDuration: Int
     
     var restDuration: Int // off, seconds

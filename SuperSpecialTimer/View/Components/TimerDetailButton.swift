@@ -23,8 +23,8 @@ struct TimerDetailButton: View {
         } label: {
             Image(systemName: iconString)
                 .padding(5)
-                .frame(width: 70, height: 70)
         }
+        .frame(width: 80, height: 80)
         .tint(.black)
         .buttonBorderShape(.circle)
     }

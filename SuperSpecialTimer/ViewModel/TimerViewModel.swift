@@ -44,7 +44,10 @@ final class TimerViewModel: ObservableObject {
     // we store that info here.
     private var stateBeforeLastPause: TimerState = .invalid
     
-    @Published var display: String = ""
+    // What the user sees, parsed numbers
+    @Published var display: String = "0:00"
+    @Published var workDurationInfo: String = "0:00"
+    @Published var restDurationInfo: String = "0:00"
     
     // TODO: for final
     func initFromUserDefaults(timerData: TimerData = TimerData()) {
@@ -57,6 +60,11 @@ final class TimerViewModel: ObservableObject {
         print("timer data init() set timerdata and state")
         self.timerData = timerData
         self.timerState = .ready
+        
+        // set up display
+        self.display = TimerHelper.formatTime(seconds: self.timerData.workDuration)
+        self.workDurationInfo = TimerHelper.formatTime(seconds: self.timerData.workDuration)
+        self.restDurationInfo = TimerHelper.formatTime(seconds: self.timerData.restDuration)
     }
     
     // TODO: Get it from user defaults then convert from dict to TimerData

@@ -12,28 +12,37 @@ struct TimerDetailView: View {
     @State var index: Int
     var body: some View {
         NavigationStack {
-            Text("")
+            Text(timerViewModel.timerData.title)
+                .font(.largeTitle)
                 .toolbar {
                     // TODO: Coordinator pattern works best man
                     NavigationLink(destination: AddEditTimerView(timerData: timerViewModel.timerData, timerIndex: index)) {
                         Text("Edit")
+                            .disabled(timerViewModel.timerState != .ready)
                     }
                 }
             VStack {
                 VStack {
-                    Text(timerViewModel.timerData.title)
-                        .font(.largeTitle)
-                    Text("Rounds: \(timerViewModel.timerData.numberOfRounds)")
-                    Text("Work (s): \(timerViewModel.timerData.workDuration)")
-                    Text("Rest (s): \(timerViewModel.timerData.restDuration)")
+                    Text("\(timerViewModel.timerData.numberOfRounds) Rounds")
+                        .bold()
+                    Text("\(timerViewModel.display)")
+                        .font(.system(size: 100, weight: .heavy, design: .serif))
+                    
+                    HStack {
+                        Text("Work\n\(timerViewModel.workDurationInfo)")
+                        Spacer(minLength: 50.0)
+                        Text("Rest\n\(timerViewModel.restDurationInfo)")
+                    }
+                    .padding(.leading, 14)
+                    .padding(.trailing, 14)
                 }
                 
                 Divider()
                 
                 VStack {
+                    
                     Text("state: \(timerViewModel.timerState.description)")
                     Text("round #: \(timerViewModel.timerData.currentRound)")
-                    Text("duration: \(timerViewModel.display)")
                 }
                 .padding()
                 

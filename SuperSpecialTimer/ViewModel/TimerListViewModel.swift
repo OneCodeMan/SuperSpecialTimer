@@ -82,8 +82,27 @@ class TimerListViewModel: ObservableObject {
         // self.timers = MockTimers.mockTimers
     }
     
-    func deleteTimer(at index: Int) {
-        // TODO: 
+    func deleteTimer(at index: IndexSet) {
+        self.timers.remove(atOffsets: index)
+        print(self.timers)
+        
+        // convert to dict
+        let userDefaults = UserDefaults.standard
+        if let sd = userDefaults.array(forKey: "timers") as? [[String: String]] {
+            var updatedCopyUserDefaults = sd
+            updatedCopyUserDefaults.remove(atOffsets: index)
+            
+            // Recompute the index property starting from 0
+            for (newIndex, _) in updatedCopyUserDefaults.enumerated() {
+                updatedCopyUserDefaults[newIndex]["index"] = "\(newIndex)"
+            }
+            
+            userDefaults.set(updatedCopyUserDefaults, forKey: "timers")
+        } else {
+            print("userdefaults error in timerlistviewmodel::deletetimer -- couldnt get timers array")
+        }
+
+        
     }
     
 }
