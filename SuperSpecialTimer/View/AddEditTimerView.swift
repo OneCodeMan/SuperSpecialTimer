@@ -2,139 +2,124 @@
 //  AddEditTimerView.swift
 //  SuperSpecialTimer
 //
-//  Created by Dave Gumba on 2024-06-11.
+//  Created by Dave Gumba on 2024-07-01.
 //
 
+import Combine
 import SwiftUI
 
-// For HIIT timer
-// for different types of timer forms, use ViewBuilder?
 struct AddEditTimerView: View {
-    @ObservedObject var addEditTimerViewModel = AddEditTimerViewModel()
-    @State var timerData: TimerData
+    @StateObject var viewModel: AddEditTimerViewModel
     @State var timerIndex: Int = 0
-    
-    @State var isOnThemeSelect = false
-    @State private var scale: CGFloat = 1.5
-    
     @Environment(\.dismiss) var dismiss
     
+    @State var workMinutes: Int = 0
+    @State var workSeconds: Int = 0
+
     var body: some View {
         NavigationView {
             Form {
-                Section {
-                    Group {
-                        HStack {
-                            Text("Title")
-                                .bold()
-                                .padding(.trailing)
-                            Spacer()
-                            TextField(timerData.title, text: $addEditTimerViewModel.title)
-                        }
-                    }
-                    
-                    Group {
-                        VStack {
-                            HStack {
-                                Text("Theme")
-                                    .bold()
-                                Picker("Theme", selection: $addEditTimerViewModel.theme) {
-                                    ForEach(Theme.allCases, id: \.self) { theme in
-                                        Circle()
-                                            .fill(theme.mainColor)
-                                            .frame(width: 20, height: 20)
-                                            .tag(theme)
-                                    }
-                                }
-                                .pickerStyle(.wheel)
-                                .frame(height: 120)
-                                .onChange(of: addEditTimerViewModel.theme) { oldValue, newValue in
-                                    print("old val: \(oldValue), new val: \(newValue)")
-                                }
-                            }
-                            Text(addEditTimerViewModel.theme.name)
-                                .foregroundStyle(addEditTimerViewModel.theme.mainColor)
-                                .italic()
-                                .font(.footnote)
-                        }
-                    }
-                    
-                    Group {
-                        HStack {
-                            Text("Rounds")
-                                .bold()
-                                .padding(.trailing)
-                            Spacer()
-                            TextField(String(timerData.numberOfRounds), value: $addEditTimerViewModel.numberOfRounds, formatter: NumberFormatter())
-                                .keyboardType(.numberPad)
-                        }
-                    }
-                    
-                    Group {
-                        HStack {
-                            Text("Work Duration")
-                                .bold()
-                                .padding(.trailing)
-                            Spacer()
-                            TextField(String(timerData.workDuration), value: $addEditTimerViewModel.workDuration, formatter: NumberFormatter())
-                                .keyboardType(.numberPad)
-                        }
-                    }
-                    
-                    Group {
-                        HStack {
-                            Text("Rest Duration")
-                                .bold()
-                                .padding(.trailing)
-                            Spacer()
-                            TextField(String(timerData.restDuration), value: $addEditTimerViewModel.restDuration, formatter: NumberFormatter())
-                                .keyboardType(.numberPad)
-                        }
-                    }
-                    // TODO: custom button
-                    Button {
-                        dismiss()
-                        addEditTimerViewModel.submitForm()
-                    } label: {
-                        Text("Submit")
-                    }
-                } // section
                 
-                Section {
-                    Group {
-                        Button {
-                            addEditTimerViewModel.deleteTimer()
-                        } label: {
-                            Text("Delete Timer")
-                        }
+                // MARK: TIMER TITLE
+                Group {
+                    HStack {
+                        Text("Title")
+                            .bold()
+                            .padding(.trailing)
+                        Spacer()
+                        TextField(viewModel.title, text: $viewModel.title)
                         
                     }
                 }
+                
+                // MARK: Number of rounds
+                Group {
+                    NavigationLink(destination: RoundsPickerView(selectedValue: $viewModel.numberOfRounds, title: "Rounds")) {
+                       HStack {
+                           Text("Rounds")
+                           Spacer()
+                           Text("\(viewModel.numberOfRounds)")
+                               .foregroundColor(.gray)
+                       }
+                   }
+                }
+                
+                // MARK: Work duration
+                Group {
+                    NavigationLink(destination: ActiveTimePickerView(title: "Work Duration", minutes: $workMinutes, seconds: $workSeconds)) {
+                        HStack {
+                            Text("Work Duration")
+                            Spacer()
+                            Text("\(viewModel.workDurationDisplay)")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
+                
             }
-            .onAppear {
-                // TODO: terrible
-                addEditTimerViewModel.setTimerData(timerData: timerData)
-                addEditTimerViewModel.index = timerIndex
-            }
+            .navigationTitle(viewModel.title)
         }
-        .navigationTitle("Settings")
     }
 }
 
-struct TimerSettingRowView: View {
-    let rowLabel: String
-    let rowValue: String
+struct ActiveTimePickerView: View {
+    var title: String
+    @Binding var minutes: Int
+    @Binding var seconds: Int
+    var workDurationInput: Binding<Int> { Binding (
+        get: { (minutes * 60) + seconds },
+        set: { $0 }
+    )
+        
+    }
     
     var body: some View {
-        NavigationLink(destination: EmptyView()) {
-            HStack {
-                Spacer()
-                Text(rowLabel)
-                Spacer()
-                Text(rowValue)
-                Spacer()
+        HStack {
+            Picker(selection: $minutes, label: Text("Minutes")) {
+                ForEach(0 ..< 60) {
+                    Text("\($0)")
+                }
             }
-            .padding()
+            .pickerStyle(WheelPickerStyle())
+            
+            Text("minutes")
+            
+            Picker(selection: $seconds, label: Text("Seconds")) {
+                ForEach(0 ..< 60) {
+                    Text("\($0)")
+                }
+            }
+            .pickerStyle(WheelPickerStyle())
+            
+            Text("seconds")
+            
+            Spacer()
         }
+        .padding()
+        .navigationBarTitle(title)
+    }
+}
+
+struct RoundsPickerView: View {
+    @Binding var selectedValue: Int
+    var title: String
+
+    var body: some View {
+        VStack {
+            Text("Selected value: \(selectedValue)")
+                .font(.largeTitle)
+                .padding()
+
+            Picker(title, selection: $selectedValue) {
+                ForEach(0..<10) { value in
+                    Text("\(value)").tag(value)
+                }
+            }
+            .pickerStyle(WheelPickerStyle())
+            .frame(height: 150)
+            .clipped()
+        }
+        .padding()
+        .navigationTitle(title)
     }
 }

@@ -6,20 +6,27 @@
 //
 
 import Foundation
+import Combine
 import SwiftUI
 
 // timer settings go here?
 final class AddEditTimerViewModel: ObservableObject {
     @State var timerData: TimerData = TimerData()
+    @State var index: Int = 0
     @Published var title = ""
     @Published var theme: Theme = .bubblegum
     @Published var numberOfRounds = 0
     @Published var workDuration = 0
     @Published var restDuration = 0
-    @Published var index: Int = 0
     
-    init(timerData td: TimerData = TimerData()) {
+    @State var workDurationDisplay = ""
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    init(timerData td: TimerData = TimerData(), index: Int = 0) {
         print("AddEdit Timer INIT!!")
+        self.index = index
+        self.setTimerData(timerData: td)
     }
     
     func setTimerData(timerData td: TimerData) {
@@ -29,6 +36,8 @@ final class AddEditTimerViewModel: ObservableObject {
         self.numberOfRounds = td.numberOfRounds
         self.workDuration = td.workDuration
         self.restDuration = td.restDuration
+        
+        self.workDurationDisplay = TimerHelper.formatTime(seconds: workDuration)
     }
     
     func submitForm() {

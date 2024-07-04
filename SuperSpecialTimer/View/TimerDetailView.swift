@@ -24,7 +24,7 @@ struct TimerDetailView: View {
                             .font(.largeTitle)
                             .toolbar {
                                 // TODO: Coordinator pattern works best man
-                                NavigationLink(destination: AddEditTimerView(timerData: timerViewModel.timerData, timerIndex: index)) {
+                                NavigationLink(destination: OldAddEditTimerView(timerData: timerViewModel.timerData)) {
                                     Text("Edit")
                                         .disabled(timerViewModel.timerState != .ready)
                                 }
