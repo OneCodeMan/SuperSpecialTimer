@@ -80,7 +80,6 @@ final class TimerViewModel: ObservableObject {
         self.stateColourInfo = self.timerData.theme.mainColor
     }
     
-    // TODO: Get it from user defaults then convert from dict to TimerData
     func fetchTimerData(from index: Int) {
         if let timerDictsFromUserDefaults = UserDefaults.standard.array(forKey: "timers") as? [[String: String]] {
             let upAr = timerDictsFromUserDefaults[index]
