@@ -2,7 +2,7 @@
 
 ## TODOS -- June 22, 2024
 - [x] User can edit a timer and save to user defaults
-- [ ] User can delete a timer
+- [x] User can delete a timer
 - [ ] Do something about default timers.
 
 Later TODOs:

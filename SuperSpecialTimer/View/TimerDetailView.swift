@@ -24,7 +24,7 @@ struct TimerDetailView: View {
                             .font(.largeTitle)
                             .toolbar {
                                 // TODO: Coordinator pattern works best man
-                                NavigationLink(destination: AddEditTimerView(timerData: timerViewModel.timerData, timerIndex: index)) {
+                                NavigationLink(destination: OldAddEditTimerView(timerData: timerViewModel.timerData)) {
                                     Text("Edit")
                                         .disabled(timerViewModel.timerState != .ready)
                                 }
@@ -85,8 +85,17 @@ struct TimerDetailView: View {
                         }
                         
                         TimerDetailButton(iconString: "stop.circle") {
-                            // TODO: alert: are you sure?
-                            timerViewModel.onStop()
+                            timerViewModel.displayStopTimerConfirmation = true
+                            timerViewModel.onPause()
+                        }
+                        .alert("Are you sure you want to stop this current timer session?", isPresented: $timerViewModel.displayStopTimerConfirmation) {
+                            Button("YES") { 
+                                timerViewModel.onStop()
+                            }
+                            
+                            Button("CANCEL") {
+                                timerViewModel.displayStopTimerConfirmation = false
+                            }
                         }
                         
                     }

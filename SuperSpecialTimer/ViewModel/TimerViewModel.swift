@@ -52,6 +52,7 @@ final class TimerViewModel: ObservableObject {
     // we don't know whether to go to .work or .rest
     // we store that info here.
     private var stateBeforeLastPause: TimerState = .invalid
+    @Published var displayStopTimerConfirmation: Bool = false
     
     // What the user sees, parsed numbers
     @Published var display: String = "0:00"
@@ -80,7 +81,6 @@ final class TimerViewModel: ObservableObject {
         self.stateColourInfo = self.timerData.theme.mainColor
     }
     
-    // TODO: Get it from user defaults then convert from dict to TimerData
     func fetchTimerData(from index: Int) {
         if let timerDictsFromUserDefaults = UserDefaults.standard.array(forKey: "timers") as? [[String: String]] {
             let upAr = timerDictsFromUserDefaults[index]
