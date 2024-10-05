@@ -85,8 +85,17 @@ struct TimerDetailView: View {
                         }
                         
                         TimerDetailButton(iconString: "stop.circle") {
-                            // TODO: alert: are you sure?
-                            timerViewModel.onStop()
+                            timerViewModel.displayStopTimerConfirmation = true
+                            timerViewModel.onPause()
+                        }
+                        .alert("Are you sure you want to stop this current timer session?", isPresented: $timerViewModel.displayStopTimerConfirmation) {
+                            Button("YES") { 
+                                timerViewModel.onStop()
+                            }
+                            
+                            Button("CANCEL") {
+                                timerViewModel.displayStopTimerConfirmation = false
+                            }
                         }
                         
                     }

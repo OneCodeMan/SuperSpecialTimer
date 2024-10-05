@@ -52,6 +52,7 @@ final class TimerViewModel: ObservableObject {
     // we don't know whether to go to .work or .rest
     // we store that info here.
     private var stateBeforeLastPause: TimerState = .invalid
+    @Published var displayStopTimerConfirmation: Bool = false
     
     // What the user sees, parsed numbers
     @Published var display: String = "0:00"
