@@ -41,6 +41,7 @@
 
 import Foundation
 import SwiftUI
+import AVFoundation
 
 final class TimerViewModel: ObservableObject {
     @Published var timerData: TimerData = TimerData()
@@ -61,13 +62,11 @@ final class TimerViewModel: ObservableObject {
     @Published var roundInfo: String = ""
     @Published var stateColourInfo: Color = .red
     
-    // TODO: for final
     func initFromUserDefaults(timerData: TimerData = TimerData()) {
-        // TODO: use info from user defaults to populate TimerData
         self.timerData = timerData
     }
     
-    // TODO: for testing//for now
+    // TESTING INIT
     init(timerData: TimerData = TimerData()) {
         print("timer data init() set timerdata and state")
         self.timerData = timerData
@@ -98,6 +97,7 @@ final class TimerViewModel: ObservableObject {
         
         // if it's our initial press, set timerState to .work
         if self.timerState == .ready {
+            self.playSwitchModeSound()
             self.timerState = .work
             updateDisplayInfo()
         }
@@ -113,6 +113,7 @@ final class TimerViewModel: ObservableObject {
                 } else {
                     self.timerState = self.timerData.currentRound < self.timerData.numberOfRounds ? .rest : .invalid
                     self.updateDisplayInfo()
+                    self.playSwitchModeSound()
                     
                     // reset duration
                     self.timerData.currentWorkDuration = self.timerData.workDuration
@@ -255,5 +256,10 @@ final class TimerViewModel: ObservableObject {
         case .invalid:
             self.stateColourInfo = timerData.theme.mainColor
         }
+    }
+    
+    func playSwitchModeSound() {
+        print("playSwitchModeSound() -> Sound should play.")
+        // audioPlayerViewModel.playOrPause()
     }
 }

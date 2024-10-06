@@ -74,7 +74,7 @@ struct TimerData: Identifiable {
     
     // default init
     init() {
-        print("TimerData: default init has been called.")
+        // print("TimerData: default init has been called.")
         self.title = "Default Title"
         self.workDuration = 4
         self.restDuration = 4
