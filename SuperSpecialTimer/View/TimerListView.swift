@@ -30,7 +30,7 @@ struct TimerListView: View {
                     // Timer List Item View
                     NavigationLink {
                         // FIXME: I don't love how we're making the ViewModel in the view
-                        TimerDetailView(timerViewModel: TimerViewModel(timerData: tm), index: tm.index)
+                        TimerDetailView(viewModel: TimerViewModel(timerData: tm))
                     } label: {
                         TimerListItemView(currentTimer: tm)
                     }
