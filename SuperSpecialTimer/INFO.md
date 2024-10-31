@@ -1,5 +1,20 @@
 #  INFO
 
+## October 31, 2024
+
+### WAVE 1
+- [ ] Have a detailsview with a button to a countdown view which segues to finally run the timer.
+- [ ] In the `TimerData` or somewhere in viewmodel, have vars responsible for displaying parsed data.
+    - We are parsing data in the Views themselves, we shouldn't.
+- [ ] Make the timer repeat depending on rounds set.
+- [ ] Implement `CountdownView`
+- [ ] On `isCountdownRunning` and on timer active state, hide the back button.
+
+### WAVE 2
+- [ ] User stats of how many times they have used timer and when.
+
+...............
+
 ## October 30, 2024
 MVP state from now:
 - [ ] Display ListView items properly

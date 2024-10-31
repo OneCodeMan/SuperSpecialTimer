@@ -26,6 +26,14 @@
 		16551C3A2C32E2E000372B41 /* TimerTypeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16551C392C32E2E000372B41 /* TimerTypeSelectView.swift */; };
 		16551C3C2C331F7600372B41 /* TimerFormPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16551C3B2C331F7600372B41 /* TimerFormPickerView.swift */; };
 		16551C3E2C33463D00372B41 /* AddEditTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16551C3D2C33463D00372B41 /* AddEditTimerView.swift */; };
+		166EDA162CD3CE9E00E503E8 /* UIColor+Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166EDA152CD3CE9E00E503E8 /* UIColor+Builder.swift */; };
+		166EDA182CD3CF6F00E503E8 /* CarouselPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166EDA172CD3CF6F00E503E8 /* CarouselPage.swift */; };
+		166EDA1A2CD3D1BC00E503E8 /* Font+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166EDA192CD3D1BC00E503E8 /* Font+Custom.swift */; };
+		166EDA202CD3D2AC00E503E8 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 166EDA1C2CD3D2AB00E503E8 /* Tinos-Bold.ttf */; };
+		166EDA212CD3D2AC00E503E8 /* Tinos-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 166EDA1D2CD3D2AB00E503E8 /* Tinos-Italic.ttf */; };
+		166EDA222CD3D2AC00E503E8 /* Tinos-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 166EDA1E2CD3D2AC00E503E8 /* Tinos-BoldItalic.ttf */; };
+		166EDA232CD3D2AC00E503E8 /* Tinos-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 166EDA1F2CD3D2AC00E503E8 /* Tinos-Regular.ttf */; };
+		166EDA252CD3D37D00E503E8 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166EDA242CD3D37D00E503E8 /* CountdownView.swift */; };
 		167CFCD22CB2D9D70090362A /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167CFCD12CB2D9D70090362A /* AudioPlayer.swift */; };
 		167CFCD92CB2E2750090362A /* session_end.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167CFCD62CB2E2750090362A /* session_end.mp3 */; };
 		167CFCDA2CB2E2750090362A /* button_click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 167CFCD72CB2E2750090362A /* button_click.mp3 */; };
@@ -80,6 +88,14 @@
 		16551C392C32E2E000372B41 /* TimerTypeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTypeSelectView.swift; sourceTree = "<group>"; };
 		16551C3B2C331F7600372B41 /* TimerFormPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerFormPickerView.swift; sourceTree = "<group>"; };
 		16551C3D2C33463D00372B41 /* AddEditTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditTimerView.swift; sourceTree = "<group>"; };
+		166EDA152CD3CE9E00E503E8 /* UIColor+Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Builder.swift"; sourceTree = "<group>"; };
+		166EDA172CD3CF6F00E503E8 /* CarouselPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselPage.swift; sourceTree = "<group>"; };
+		166EDA192CD3D1BC00E503E8 /* Font+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Custom.swift"; sourceTree = "<group>"; };
+		166EDA1C2CD3D2AB00E503E8 /* Tinos-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tinos-Bold.ttf"; sourceTree = "<group>"; };
+		166EDA1D2CD3D2AB00E503E8 /* Tinos-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tinos-Italic.ttf"; sourceTree = "<group>"; };
+		166EDA1E2CD3D2AC00E503E8 /* Tinos-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tinos-BoldItalic.ttf"; sourceTree = "<group>"; };
+		166EDA1F2CD3D2AC00E503E8 /* Tinos-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tinos-Regular.ttf"; sourceTree = "<group>"; };
+		166EDA242CD3D37D00E503E8 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		167CFCD12CB2D9D70090362A /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		167CFCD62CB2E2750090362A /* session_end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = session_end.mp3; sourceTree = "<group>"; };
 		167CFCD72CB2E2750090362A /* button_click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = button_click.mp3; sourceTree = "<group>"; };
@@ -204,6 +220,7 @@
 				160312AA2BEBE92500478E73 /* AddTimerView.swift */,
 				16551C392C32E2E000372B41 /* TimerTypeSelectView.swift */,
 				16551C3D2C33463D00372B41 /* AddEditTimerView.swift */,
+				166EDA242CD3D37D00E503E8 /* CountdownView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,6 +241,8 @@
 				16A535D72C10E3B600259FC7 /* TimerHelper.swift */,
 				16A535E22C275A1900259FC7 /* UserDefaults+KeyValidation.swift */,
 				167CFCD12CB2D9D70090362A /* AudioPlayer.swift */,
+				166EDA152CD3CE9E00E503E8 /* UIColor+Builder.swift */,
+				166EDA192CD3D1BC00E503E8 /* Font+Custom.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -234,6 +253,7 @@
 				160312AF2BEC15ED00478E73 /* TimerDetailButton.swift */,
 				16A535DE2C19386D00259FC7 /* CustomAddEditTimerRowView.swift */,
 				16551C3B2C331F7600372B41 /* TimerFormPickerView.swift */,
+				166EDA172CD3CF6F00E503E8 /* CarouselPage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -254,9 +274,21 @@
 			path = Experimental;
 			sourceTree = "<group>";
 		};
+		166EDA1B2CD3D24900E503E8 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				166EDA1C2CD3D2AB00E503E8 /* Tinos-Bold.ttf */,
+				166EDA1E2CD3D2AC00E503E8 /* Tinos-BoldItalic.ttf */,
+				166EDA1D2CD3D2AB00E503E8 /* Tinos-Italic.ttf */,
+				166EDA1F2CD3D2AC00E503E8 /* Tinos-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		167CFCD52CB2E2750090362A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				166EDA1B2CD3D24900E503E8 /* Fonts */,
 				167CFCD62CB2E2750090362A /* session_end.mp3 */,
 				167CFCD72CB2E2750090362A /* button_click.mp3 */,
 				167CFCD82CB2E2750090362A /* bell_sound_1.mp3 */,
@@ -369,8 +401,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1603127C2BE998FC00478E73 /* Preview Assets.xcassets in Resources */,
+				166EDA222CD3D2AC00E503E8 /* Tinos-BoldItalic.ttf in Resources */,
+				166EDA232CD3D2AC00E503E8 /* Tinos-Regular.ttf in Resources */,
+				166EDA212CD3D2AC00E503E8 /* Tinos-Italic.ttf in Resources */,
 				160312792BE998FC00478E73 /* Assets.xcassets in Resources */,
 				167CFCD92CB2E2750090362A /* session_end.mp3 in Resources */,
+				166EDA202CD3D2AC00E503E8 /* Tinos-Bold.ttf in Resources */,
 				167CFCDB2CB2E2750090362A /* bell_sound_1.mp3 in Resources */,
 				167CFCDA2CB2E2750090362A /* button_click.mp3 in Resources */,
 			);
@@ -399,6 +435,7 @@
 			files = (
 				1637C7152CCDCABC00B99812 /* TimerExpView.swift in Sources */,
 				16551C3C2C331F7600372B41 /* TimerFormPickerView.swift in Sources */,
+				166EDA252CD3D37D00E503E8 /* CountdownView.swift in Sources */,
 				16A535DB2C1936B700259FC7 /* OldAddEditTimerView.swift in Sources */,
 				160312A92BEBE90800478E73 /* TimerDetailView.swift in Sources */,
 				16A535E32C275A1900259FC7 /* UserDefaults+KeyValidation.swift in Sources */,
@@ -406,7 +443,9 @@
 				160312B02BEC15ED00478E73 /* TimerDetailButton.swift in Sources */,
 				160312A52BEBE62E00478E73 /* TimerViewModel.swift in Sources */,
 				16551C3A2C32E2E000372B41 /* TimerTypeSelectView.swift in Sources */,
+				166EDA162CD3CE9E00E503E8 /* UIColor+Builder.swift in Sources */,
 				160312772BE998FA00478E73 /* ContentView.swift in Sources */,
+				166EDA182CD3CF6F00E503E8 /* CarouselPage.swift in Sources */,
 				160312AB2BEBE92500478E73 /* AddTimerView.swift in Sources */,
 				16A535DD2C1936C100259FC7 /* AddEditTimerViewModel.swift in Sources */,
 				160312B52BEC359D00478E73 /* TimerListViewModel.swift in Sources */,
@@ -419,6 +458,7 @@
 				16A535D82C10E3B600259FC7 /* TimerHelper.swift in Sources */,
 				16A535E12C2225F800259FC7 /* TimerSetting.swift in Sources */,
 				167CFCD22CB2D9D70090362A /* AudioPlayer.swift in Sources */,
+				166EDA1A2CD3D1BC00E503E8 /* Font+Custom.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

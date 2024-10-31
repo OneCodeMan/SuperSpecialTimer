@@ -7,8 +7,17 @@
 
 import SwiftUI
 
+/**
+ Consists of a 2 page tab view.
+ TabView has 2 CarouselPage instances in it
+ - First page is the timer in action
+ - Second page is the timer details
+ */
 struct TimerDetailView: View {
     @ObservedObject var viewModel: TimerViewModel
+    
+    // MARK: TabView currentIndex change
+    @State var currentIndex: Int = 0
 
     var body: some View {
         VStack(spacing: 24) {
@@ -56,6 +65,18 @@ struct TimerDetailView: View {
             }
             .padding(.vertical, 44)
             .padding(.horizontal, 24)
+        }
+    }
+}
+
+struct TimerInfoView: View {
+    var body: some View {
+        VStack {
+            Text(viewModel.timerData.title)
+                .font(.defaultFontLargeTitle)
+            Text("Number of Rounds: \(viewModel.timerData.numberOfRounds)")
+            Text("Work Duration: \(viewModel.timerData.workDuration)")
+            Text("Rest Duration: \(viewModel.timerData.restDuration)")
         }
     }
 }
