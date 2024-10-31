@@ -17,7 +17,7 @@ struct TimerDetailView: View {
                 CircleProgressView(
                     progress: viewModel.progress,
                     lineWidth: 6,
-                    color: Color(hex: 0xFD8A06)
+                    color: viewModel.timerData.theme.mainColor// Color(hex: 0xFD8A06)
                 )
                 .frame(width: 240, height: 240)
                 

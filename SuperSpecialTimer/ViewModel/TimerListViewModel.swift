@@ -44,10 +44,8 @@ class TimerListViewModel: ObservableObject {
                     print(dictToData)
                     timersUnordered.append(dictToData)
                     
-                    self.timers = timersUnordered.sorted { $0.index < $1.index }
-                    // the indexed version
-                    
-                    
+                    self.timers = timersUnordered.sorted { $0.title < $1.title }
+
                     print("FETCHED TIMERS IN THE END: \(self.timers.count) elements\n \(self.timers)")
                     
                 }
@@ -57,7 +55,7 @@ class TimerListViewModel: ObservableObject {
             }
         } else {
             print("No timers, we will create them.")
-            self.timers = MockTimers.initialTimers
+            self.timers = MockTimers.initialTimers.sorted{ $0.title > $1.title }
             
             var timersArray: [Dictionary<String, String>] = []
 

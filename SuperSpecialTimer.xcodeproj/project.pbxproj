@@ -57,7 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		160312712BE998FA00478E73 /* SuperSpecialTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperSpecialTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		160312712BE998FA00478E73 /* Hercoletto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hercoletto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		160312742BE998FA00478E73 /* SuperSpecialTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSpecialTimerApp.swift; sourceTree = "<group>"; };
 		160312762BE998FA00478E73 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		160312782BE998FC00478E73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		160312722BE998FA00478E73 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				160312712BE998FA00478E73 /* SuperSpecialTimer.app */,
+				160312712BE998FA00478E73 /* Hercoletto.app */,
 				160312812BE998FC00478E73 /* SuperSpecialTimerTests.xctest */,
 				1603128B2BE998FC00478E73 /* SuperSpecialTimerUITests.xctest */,
 			);
@@ -281,7 +281,7 @@
 			);
 			name = SuperSpecialTimer;
 			productName = SuperSpecialTimer;
-			productReference = 160312712BE998FA00478E73 /* SuperSpecialTimer.app */;
+			productReference = 160312712BE998FA00478E73 /* Hercoletto.app */;
 			productType = "com.apple.product-type.application";
 		};
 		160312802BE998FC00478E73 /* SuperSpecialTimerTests */ = {
@@ -596,7 +596,8 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = daveyg.SuperSpecialTimer;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = Hercoletto;
+				PRODUCT_NAME = Hercoletto;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -625,7 +626,8 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = daveyg.SuperSpecialTimer;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = Hercoletto;
+				PRODUCT_NAME = Hercoletto;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

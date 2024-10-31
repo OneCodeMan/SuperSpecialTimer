@@ -8,6 +8,22 @@
 import Foundation
 import SwiftUI
 
+// what type of timer we dealin' with here?
+// NOTE: `martialArts` and `pomodoro` seem to be identical?
+enum TimerDataStyle {
+    // simple x time then done. that's it.
+    case meditation
+    
+    // x time on, y time break. infinite/pre-defined # of rounds?
+    case pomodoro
+    
+    // ((x time on, y time off) * numRoundsInSet -> z time break) repeat for numRoundsTotal
+    case hiit
+    
+    // x time on, y time off. infinite/pre-defined # of rounds?
+    case martialArts
+}
+
 // MARK: timer data
 // what we'll display on TimerListView
 struct TimerData: Identifiable {

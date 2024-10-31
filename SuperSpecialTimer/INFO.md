@@ -1,5 +1,15 @@
 #  INFO
 
+## October 30, 2024
+MVP state from now:
+- [ ] Display ListView items properly
+- [ ] Display DetailView items properly
+- [ ] Add audio
+
+## UPDATE ON PROJECT -- October 29, 2024
+I am currently working on finishing up the MVP for Pinselton. I will give this
+more attention when I have gotten Pinselton to app store state.
+
 ## TODOS -- June 22, 2024
 - [x] User can edit a timer and save to user defaults
 - [x] User can delete a timer

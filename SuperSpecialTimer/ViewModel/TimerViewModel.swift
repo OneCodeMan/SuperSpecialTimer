@@ -40,7 +40,7 @@ final class TimerViewModel: ObservableObject {
     @Published var isTimerActive: Bool = false
     
     
-    private var timerData: TimerData
+    @Published public var timerData: TimerData
     private var cancellable: Cancellable?
     
     // Initializer now takes `TimerData` instead of `Duration`

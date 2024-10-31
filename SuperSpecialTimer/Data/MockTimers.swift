@@ -21,10 +21,13 @@ class MockTimers {
     ]
     
     static var initialTimers = [
+        TimerData(title: "Meditation", workDuration: 1000, restDuration: 300, numberOfRounds: 5, index: 3),
         TimerData(title: "Pomodoro", workDuration: 1500, restDuration: 300, numberOfRounds: 5, index: 0),
         TimerData(title: "HIIT", workDuration: 20, restDuration: 10, breakDuration: 60, numberOfRounds: 20, index: 1),
-        TimerData(title: "Bag Workout", workDuration: 180, restDuration: 60, breakDuration: 60, numberOfRounds: 12, index: 2),
-        TimerData(title: "Pomodoro2", workDuration: 1000, restDuration: 300, numberOfRounds: 5, index: 3),
+        TimerData(title: "Martial Arts", workDuration: 180, restDuration: 60, breakDuration: 60, numberOfRounds: 12, index: 2),
+        
+        // ez testing
+        TimerData(title: "TESTING", workDuration: 5, restDuration: 5, breakDuration: 5, numberOfRounds: 12, index: 4),
     ]
     
     // input: "5m26s"
