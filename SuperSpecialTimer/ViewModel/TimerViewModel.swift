@@ -34,16 +34,18 @@ import Combine
 import SwiftUI
 
 final class TimerViewModel: ObservableObject {
-    // Publicly exposed states to the view
     @Published var elapsedSeconds: Duration = .seconds(0)
     @Published var elapsedMilliseconds: Int = 0
     @Published var isTimerActive: Bool = false
-    
-    
-    @Published public var timerData: TimerData
+    @Published var timerData: TimerData
     private var cancellable: Cancellable?
+    private var durationSeconds: Duration
     
-    // Initializer now takes `TimerData` instead of `Duration`
+    private enum Phase {
+        case work, rest
+    }
+    private var currentPhase: Phase = .work
+    
     init(timerData: TimerData) {
         self.timerData = timerData
         self.durationSeconds = .seconds(timerData.workDuration)
@@ -63,19 +65,17 @@ final class TimerViewModel: ObservableObject {
         isTimerActive || elapsedSeconds > .seconds(0)
     }
     
-    private var durationSeconds: Duration
-
     func toggleTimer() {
         isTimerActive ? pauseTimer() : startTimer()
     }
     
     private func startTimer() {
         isTimerActive = true
+        currentPhase = .work
+        resetElapsedTime()
         cancellable = Timer.publish(every: 0.01, on: .main, in: .common)
             .autoconnect()
-            .sink { _ in
-                self.incrementTimer()
-            }
+            .sink { _ in self.incrementTimer() }
     }
     
     private func incrementTimer() {
@@ -85,12 +85,37 @@ final class TimerViewModel: ObservableObject {
                     elapsedSeconds += .seconds(1)
                 }
                 if shouldStopTimer {
-                    stopAndResetTimer()
+                    handleRoundCompletion()
                 }
             }
         }
         if !shouldStopTimer {
             elapsedMilliseconds += 10
+        }
+    }
+    
+    private func handleRoundCompletion() {
+        if currentPhase == .work {
+            switchToRestPhase()
+        } else if currentPhase == .rest {
+            moveToNextRoundOrStop()
+        }
+    }
+    
+    private func switchToRestPhase() {
+        currentPhase = .rest
+        durationSeconds = .seconds(timerData.restDuration)
+        resetElapsedTime()
+    }
+    
+    private func moveToNextRoundOrStop() {
+        if timerData.currentRound < timerData.numberOfRounds {
+            timerData.currentRound += 1
+            currentPhase = .work
+            durationSeconds = .seconds(timerData.workDuration)
+            resetElapsedTime()
+        } else {
+            stopAndResetTimer()
         }
     }
     
@@ -105,10 +130,13 @@ final class TimerViewModel: ObservableObject {
     
     func stopAndResetTimer() {
         pauseTimer()
+        timerData.reset()
+        resetElapsedTime()
+    }
+    
+    private func resetElapsedTime() {
         elapsedMilliseconds = 0
-        withAnimation(.easeInOut) {
-            elapsedSeconds = .seconds(0)
-        }
+        elapsedSeconds = .seconds(0)
     }
 }
 

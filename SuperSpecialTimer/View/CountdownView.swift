@@ -15,6 +15,7 @@ struct CountdownView: View {
 //    @EnvironmentObject var runTracker: RunTracker
     @State var timer: Timer?
     @State var countdown = 3
+    @State var completion: () -> ()
     
     var body: some View {
         Text("\(countdown)")
@@ -31,6 +32,7 @@ struct CountdownView: View {
             if countdown <= 1 {
                 timer?.invalidate()
                 timer = nil
+                completion()
 //                runTracker.presentCountdown = false
 //                runTracker.startRun()
             } else {
@@ -38,8 +40,4 @@ struct CountdownView: View {
             }
         })
     }
-}
-
-#Preview {
-    CountdownView()
 }

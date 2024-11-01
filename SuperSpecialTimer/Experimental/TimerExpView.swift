@@ -16,58 +16,65 @@ struct TimerExpView: View {
     @State private var elapsedMilliseconds: Int = 0
     @State private var cancellable: Cancellable?
     
+    @State private var displayCountdownView: Bool = true
+    
     var body: some View {
-        VStack(spacing: 24) {
-            Spacer()
-            ZStack {
-                CircleProgressView(
-                    progress: progress,
-                    lineWidth: 6,
-                    color: Color(hex: 0xFD8A06)
-                )
-                .frame(width: 240, height: 240)
-                
-                Text(
-                    durationSeconds - elapsedSeconds,
-                    format: .time(pattern: .minuteSecond(padMinuteToLength: 2))
-                )
-                .font(.system(size: 50, weight: .medium))
-                .foregroundStyle(.white.opacity(0.8))
-                .contentTransition(.numericText())
-                .monospaced()
+        if displayCountdownView {
+            CountdownView {
+                self.displayCountdownView = false
             }
-            
-            HStack {
-                // Cancel button
-                if shouldShowCancelButton() {
+        } else {
+            VStack(spacing: 24) {
+                Spacer()
+                ZStack {
+                    CircleProgressView(
+                        progress: progress,
+                        lineWidth: 6,
+                        color: Color(hex: 0xFD8A06)
+                    )
+                    .frame(width: 240, height: 240)
+                    
+                    Text(
+                        durationSeconds - elapsedSeconds,
+                        format: .time(pattern: .minuteSecond(padMinuteToLength: 2))
+                    )
+                    .font(.system(size: 50, weight: .medium))
+                    .foregroundStyle(.white.opacity(0.8))
+                    .contentTransition(.numericText())
+                    .monospaced()
+                }
+                
+                HStack {
+                    // Cancel button
+                    if shouldShowCancelButton() {
+                        Button {
+                            stopAndResetTimer()
+                        } label: {
+                            Label("Stop", systemImage: "xmark.circle.fill")
+                                .font(.system(size: 70))
+                                .symbolRenderingMode(.hierarchical)
+                                .labelStyle(.iconOnly)
+                                .tint(.red)
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    // Toggle timer button
                     Button {
-                        stopAndResetTimer()
+                        toggleTimer()
                     } label: {
-                        Label("Start", systemImage: "xmark.circle.fill")
+                        Label("Start", systemImage: isTimerValid ? "pause.circle.fill" : "play.circle.fill")
                             .font(.system(size: 70))
                             .symbolRenderingMode(.hierarchical)
                             .labelStyle(.iconOnly)
-                            .tint(.red)
+                            .tint(isTimerValid ? .orange : .green)
                     }
                 }
-                
-                Spacer()
-                
-                // Toggle timer button
-                Button {
-                    toggleTimer()
-                } label: {
-                    Label("Start", systemImage: isTimerValid ? "pause.circle.fill" : "play.circle.fill")
-                        .font(.system(size: 70))
-                        .symbolRenderingMode(.hierarchical)
-                        .labelStyle(.iconOnly)
-                        .tint(isTimerValid ? .orange : .green)
-                }
+                .padding(.vertical, 44)
+                .padding(.horizontal, 24)
             }
-            .padding(.vertical, 44)
-            .padding(.horizontal, 24)
         }
-        // .modifier(ImageBackground(imageName: "background3"))
     }
     
     // -MARK: Timer Controls
