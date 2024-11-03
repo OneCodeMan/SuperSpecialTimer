@@ -52,6 +52,7 @@ final class TimerViewModel: ObservableObject {
     @Published var currentPhaseDisplay: String
     
     private var currentPhase: Phase = .work
+    private var firstPlayPressInCurrentSession: Bool = true
     
     init(timerData: TimerData) {
         self.timerData = timerData
@@ -73,23 +74,32 @@ final class TimerViewModel: ObservableObject {
         isTimerActive || elapsedSeconds > .seconds(0)
     }
     
-    func toggleTimer() {
-        isTimerActive ? pauseTimer() : startTimer()
-    }
-    
     func activateTimer() {
-        startTimer()
+        playStartEndTimerSound()
+        playTimer()
     }
     
-    private func startTimer() {
+    func toggleTimer() {
+        isTimerActive ? pauseTimer() : playTimer()
+    }
+    
+    private func pauseTimer() {
+        cancellable?.cancel()
+        isTimerActive = false
+    }
+    
+    private func playTimer() {
         isTimerActive = true
-        currentPhase = .work
-        currentPhaseDisplay = "WORK"
-        resetElapsedTime()
+
+        switch currentPhase {
+        case .work:
+            currentPhaseDisplay = "WORK"
+        case .rest:
+            currentPhaseDisplay = "REST"
+        }
         cancellable = Timer.publish(every: 0.01, on: .main, in: .common)
             .autoconnect()
             .sink { _ in self.incrementTimer() }
-        playStartEndTimerSound()
     }
     
     private func incrementTimer() {
@@ -140,11 +150,6 @@ final class TimerViewModel: ObservableObject {
     
     private var shouldStopTimer: Bool {
         .milliseconds(elapsedMilliseconds) >= durationSeconds
-    }
-    
-    private func pauseTimer() {
-        cancellable?.cancel()
-        isTimerActive = false
     }
     
     func stopAndResetTimer() {
