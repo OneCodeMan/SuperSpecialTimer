@@ -29,6 +29,8 @@ struct TimerDetailView: View {
         if !displayCountdownView && !displayInfoView {
             VStack(spacing: 24) {
                 Spacer()
+                Text("\(viewModel.timerData.currentRound) / \(viewModel.timerData.numberOfRounds) Rounds")
+                
                 ZStack {
                     CircleProgressView(
                         progress: viewModel.progress,
@@ -39,7 +41,7 @@ struct TimerDetailView: View {
                     
                     Text(viewModel.displayTime)
                         .font(.system(size: 50, weight: .medium))
-                        .foregroundStyle(.white.opacity(0.8))
+                        // .foregroundStyle(.white.opacity(0.8))
                         .contentTransition(.numericText())
                         .monospaced()
                 }
@@ -94,14 +96,25 @@ struct TimerDetailView: View {
 }
 
 struct TimerInfoView: View {
+    @Environment(\.colorScheme) var colorScheme
     @State var dismissAndPresentCountdown: () -> ()
     var body: some View {
         VStack {
             Text(viewModel.timerData.title)
                 .font(.defaultFontLargeTitle)
-            Text("Number of Rounds: \(viewModel.timerData.numberOfRounds)")
-            Text("Work Duration: \(viewModel.timerData.workDuration)")
-            Text("Rest Duration: \(viewModel.timerData.restDuration)")
+            Text(viewModel.timerData.display.numberOfRounds)
+            
+            // e.g.
+            // Work Duration: 30 seconds
+            // Work Duration: 5 minutes
+            // Work Duration: 5 minutes 30 seconds
+            Text(viewModel.timerData.display.workDuration)
+            
+            // e.g.
+            // Rest Duration: 30 seconds
+            // Rest Duration: 5 minutes
+            // Rest Duration: 5 minutes 30 seconds
+            Text(viewModel.timerData.display.restDuration)
             
             Button {
                 withAnimation {

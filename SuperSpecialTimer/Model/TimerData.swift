@@ -52,6 +52,8 @@ struct TimerData: Identifiable {
     // timer's index in array
     var index: Int
     
+    var display: TimerDataDisplay
+    
     init(title: String = "Default Title", theme: Theme = .bubblegum, workDuration: Int, restDuration: Int, breakDuration: Int = -1, numberOfRounds: Int, index: Int = 0) {
         // user defined
         self.title = title
@@ -68,6 +70,8 @@ struct TimerData: Identifiable {
         self.currentRestDuration = self.restDuration
         self.currentBreakDuration = self.breakDuration
         self.index = index
+        
+        self.display = TimerDataDisplay(numberOfRounds: numberOfRounds, workDuration: workDuration, restDuration: restDuration)
     }
     
     init(title: String = "Default Title", workDuration: Int, restDuration: Int, breakDuration: Int = -1, numberOfRounds: Int, index: Int = 0) {
@@ -86,6 +90,8 @@ struct TimerData: Identifiable {
         self.currentRestDuration = self.restDuration
         self.currentBreakDuration = self.breakDuration
         self.index = index
+        
+        self.display = TimerDataDisplay(numberOfRounds: numberOfRounds, workDuration: workDuration, restDuration: restDuration)
     }
     
     // default init
@@ -103,6 +109,8 @@ struct TimerData: Identifiable {
         self.currentRestDuration = self.restDuration
         self.currentBreakDuration = self.breakDuration
         self.index = 0
+        
+        self.display = TimerDataDisplay(numberOfRounds: numberOfRounds, workDuration: workDuration, restDuration: restDuration)
     }
     
     mutating func reset() {
@@ -110,6 +118,30 @@ struct TimerData: Identifiable {
         self.currentRestDuration = self.restDuration
         self.currentBreakDuration = self.breakDuration
         self.currentRound = 1
+    }
+}
+
+struct TimerDataDisplay {
+    // "20 rounds" , "infinite rounds"
+    var numberOfRounds: String = ""
+    
+    // e.g.
+    // Work Duration: 30 seconds
+    // Work Duration: 5 minutes
+    // Work Duration: 5 minutes 30 seconds
+    var workDuration: String = ""
+    
+    // e.g.
+    // Rest Duration: 30 seconds
+    // Rest Duration: 5 minutes
+    // Rest Duration: 5 minutes 30 seconds
+    var restDuration: String = ""
+    
+    // parse the data.
+    init(numberOfRounds: Int, workDuration: Int, restDuration: Int) {
+        self.numberOfRounds = "Number of Rounds: \(numberOfRounds)"
+        self.workDuration = "Work Time: \(TimerHelper.formatSeconds(workDuration))"
+        self.restDuration = "Rest Time: \(TimerHelper.formatSeconds(restDuration))"
     }
 }
 

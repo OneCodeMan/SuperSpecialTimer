@@ -1,19 +1,41 @@
 #  INFO
 
-## October 31, 2024
+## I DON'T THINK THEY RUNNING AT MY PACE. JORDAN 1'S -- GOTTA KEEP THEM LACED.
 
-### WAVE 1
-- [ ] Have a detailsview with a button to a countdown view which segues to finally run the timer.
-- [ ] In the `TimerData` or somewhere in viewmodel, have vars responsible for displaying parsed data.
-    - We are parsing data in the Views themselves, we shouldn't.
-- [ ] Make the timer repeat depending on rounds set.
-- [ ] Implement `CountdownView`
-- [ ] On `isCountdownRunning` and on timer active state, hide the back button.
 
-### WAVE 2
+## November 3, 2024 [[[[October 31, 2024]]]]
+
+### WAVE 1.1
+- [ ] Create a `postTimerSummary` view
+- [ ] Hide the back button on timer active state.
+- [ ] `TimerInfoView` does not display updated data.
+    - probably displays placeholder or outdated data.
+- [ ] Stop button tapped when timer is active: "Are you sure you want to stop"
+- [ ] Create `OnboardingView`
+
+### WAVE 1.2
+- [ ] Design the different types of timers.
+
+### Wave 1.3
+- [ ] Style the List view
+- [ ] Perfect the Detail view.
+
+### Wave 1.4
 - [ ] User stats of how many times they have used timer and when.
 
-...............
+.......................................................................................
+
+## HISTORY
+
+### November 2-3, 2024
+- [x] Have a detailsview with a button to a countdown view which segues to finally run the timer.
+- [x] Implement `CountdownView`
+- [x] In the `TimerData` or somewhere in viewmodel, have vars responsible for displaying parsed data.
+    - We are parsing data in the Views themselves, we shouldn't.
+- [x] Make the timer repeat depending on rounds set.
+
+
+............................................................
 
 ## October 30, 2024
 MVP state from now:

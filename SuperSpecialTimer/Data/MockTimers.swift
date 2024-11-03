@@ -27,7 +27,7 @@ class MockTimers {
         TimerData(title: "Martial Arts", workDuration: 180, restDuration: 60, breakDuration: 60, numberOfRounds: 12, index: 2),
         
         // ez testing
-        TimerData(title: "TESTING", workDuration: 5, restDuration: 5, breakDuration: 5, numberOfRounds: 12, index: 4),
+        TimerData(title: "TESTING", workDuration: 5, restDuration: 5, breakDuration: 5, numberOfRounds: 3, index: 4),
     ]
     
     // input: "5m26s"

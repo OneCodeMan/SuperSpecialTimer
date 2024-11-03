@@ -138,6 +138,7 @@ final class TimerViewModel: ObservableObject {
     private func moveToNextRoundOrStop() {
         if timerData.currentRound < timerData.numberOfRounds {
             timerData.currentRound += 1
+            currentPhaseDisplay = "WORK"
             currentPhase = .work
             durationSeconds = .seconds(timerData.workDuration)
             resetElapsedTime()
