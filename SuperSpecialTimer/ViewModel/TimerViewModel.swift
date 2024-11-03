@@ -33,6 +33,10 @@ import Foundation
 import Combine
 import SwiftUI
 
+enum Phase {
+    case work, rest
+}
+
 final class TimerViewModel: ObservableObject {
     @Published var elapsedSeconds: Duration = .seconds(0)
     @Published var elapsedMilliseconds: Int = 0
@@ -41,14 +45,14 @@ final class TimerViewModel: ObservableObject {
     private var cancellable: Cancellable?
     private var durationSeconds: Duration
     
-    private enum Phase {
-        case work, rest
-    }
+    @Published var currentPhaseDisplay: String
+    
     private var currentPhase: Phase = .work
     
     init(timerData: TimerData) {
         self.timerData = timerData
         self.durationSeconds = .seconds(timerData.workDuration)
+        self.currentPhaseDisplay = currentPhase == .work ? "WORK" : "REST"
     }
     
     var displayTime: String {
@@ -69,9 +73,14 @@ final class TimerViewModel: ObservableObject {
         isTimerActive ? pauseTimer() : startTimer()
     }
     
+    func activateTimer() {
+        startTimer()
+    }
+    
     private func startTimer() {
         isTimerActive = true
         currentPhase = .work
+        currentPhaseDisplay = "WORK"
         resetElapsedTime()
         cancellable = Timer.publish(every: 0.01, on: .main, in: .common)
             .autoconnect()
@@ -104,6 +113,7 @@ final class TimerViewModel: ObservableObject {
     
     private func switchToRestPhase() {
         currentPhase = .rest
+        currentPhaseDisplay = "REST"
         durationSeconds = .seconds(timerData.restDuration)
         resetElapsedTime()
     }
@@ -132,6 +142,7 @@ final class TimerViewModel: ObservableObject {
         pauseTimer()
         timerData.reset()
         resetElapsedTime()
+        currentPhaseDisplay = "INACTIVE"
     }
     
     private func resetElapsedTime() {

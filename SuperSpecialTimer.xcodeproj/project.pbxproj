@@ -45,6 +45,8 @@
 		16A535E12C2225F800259FC7 /* TimerSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535E02C2225F800259FC7 /* TimerSetting.swift */; };
 		16A535E32C275A1900259FC7 /* UserDefaults+KeyValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535E22C275A1900259FC7 /* UserDefaults+KeyValidation.swift */; };
 		16A535E52C27642800259FC7 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535E42C27642800259FC7 /* Theme.swift */; };
+		16A6C4AB2CD7CEC2003C50FA /* SoundTestDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A6C4AA2CD7CEC2003C50FA /* SoundTestDemo.swift */; };
+		16A6C4AE2CD7D654003C50FA /* bell_sound_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 16A6C4AD2CD7D654003C50FA /* bell_sound_2.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +110,8 @@
 		16A535E02C2225F800259FC7 /* TimerSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSetting.swift; sourceTree = "<group>"; };
 		16A535E22C275A1900259FC7 /* UserDefaults+KeyValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+KeyValidation.swift"; sourceTree = "<group>"; };
 		16A535E42C27642800259FC7 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		16A6C4AA2CD7CEC2003C50FA /* SoundTestDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTestDemo.swift; sourceTree = "<group>"; };
+		16A6C4AD2CD7D654003C50FA /* bell_sound_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell_sound_2.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +217,7 @@
 		1603129F2BEBE47D00478E73 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				16A6C4A92CD7CEBA003C50FA /* Demos */,
 				160312AE2BEC15D500478E73 /* Components */,
 				16A535DA2C1936B700259FC7 /* OldAddEditTimerView.swift */,
 				160312A62BEBE8FE00478E73 /* TimerListView.swift */,
@@ -288,13 +293,30 @@
 		167CFCD52CB2E2750090362A /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				16A6C4AC2CD7D551003C50FA /* Audio */,
 				166EDA1B2CD3D24900E503E8 /* Fonts */,
+			);
+			path = Assets;
+			sourceTree = SOURCE_ROOT;
+		};
+		16A6C4A92CD7CEBA003C50FA /* Demos */ = {
+			isa = PBXGroup;
+			children = (
+				16A6C4AA2CD7CEC2003C50FA /* SoundTestDemo.swift */,
+			);
+			path = Demos;
+			sourceTree = "<group>";
+		};
+		16A6C4AC2CD7D551003C50FA /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				16A6C4AD2CD7D654003C50FA /* bell_sound_2.wav */,
 				167CFCD62CB2E2750090362A /* session_end.mp3 */,
 				167CFCD72CB2E2750090362A /* button_click.mp3 */,
 				167CFCD82CB2E2750090362A /* bell_sound_1.mp3 */,
 			);
-			path = Assets;
-			sourceTree = SOURCE_ROOT;
+			path = Audio;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -402,6 +424,7 @@
 			files = (
 				1603127C2BE998FC00478E73 /* Preview Assets.xcassets in Resources */,
 				166EDA222CD3D2AC00E503E8 /* Tinos-BoldItalic.ttf in Resources */,
+				16A6C4AE2CD7D654003C50FA /* bell_sound_2.wav in Resources */,
 				166EDA232CD3D2AC00E503E8 /* Tinos-Regular.ttf in Resources */,
 				166EDA212CD3D2AC00E503E8 /* Tinos-Italic.ttf in Resources */,
 				160312792BE998FC00478E73 /* Assets.xcassets in Resources */,
@@ -434,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1637C7152CCDCABC00B99812 /* TimerExpView.swift in Sources */,
+				16A6C4AB2CD7CEC2003C50FA /* SoundTestDemo.swift in Sources */,
 				16551C3C2C331F7600372B41 /* TimerFormPickerView.swift in Sources */,
 				166EDA252CD3D37D00E503E8 /* CountdownView.swift in Sources */,
 				16A535DB2C1936B700259FC7 /* OldAddEditTimerView.swift in Sources */,

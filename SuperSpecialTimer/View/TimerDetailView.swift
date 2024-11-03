@@ -25,6 +25,7 @@ struct TimerDetailView: View {
     @State private var displayInfoView: Bool = true
 
     var body: some View {
+        // Active state
         if !displayCountdownView && !displayInfoView {
             VStack(spacing: 24) {
                 Spacer()
@@ -42,6 +43,9 @@ struct TimerDetailView: View {
                         .contentTransition(.numericText())
                         .monospaced()
                 }
+                Text(viewModel.currentPhaseDisplay)
+                    .font(.defaultFontLargeTitle)
+                    .padding()
                 
                 HStack {
                     if viewModel.shouldShowCancelButton {
@@ -72,6 +76,9 @@ struct TimerDetailView: View {
                 .padding(.vertical, 44)
                 .padding(.horizontal, 24)
             }
+            .onAppear {
+                viewModel.activateTimer()
+            }
         } else if displayInfoView {
             TimerInfoView {
                 self.displayInfoView = false
@@ -96,8 +103,6 @@ struct TimerInfoView: View {
             Text("Work Duration: \(viewModel.timerData.workDuration)")
             Text("Rest Duration: \(viewModel.timerData.restDuration)")
             
-            Spacer()
-            
             Button {
                 withAnimation {
                     self.dismissAndPresentCountdown()
@@ -106,6 +111,7 @@ struct TimerInfoView: View {
                 Text("Start!!!")
             }
         }
+        .padding()
     }
 }
 
