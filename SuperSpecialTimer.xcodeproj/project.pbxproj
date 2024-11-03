@@ -47,6 +47,8 @@
 		16A535E52C27642800259FC7 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A535E42C27642800259FC7 /* Theme.swift */; };
 		16A6C4AB2CD7CEC2003C50FA /* SoundTestDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A6C4AA2CD7CEC2003C50FA /* SoundTestDemo.swift */; };
 		16A6C4AE2CD7D654003C50FA /* bell_sound_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 16A6C4AD2CD7D654003C50FA /* bell_sound_2.wav */; };
+		16A6C4B02CD7DEBE003C50FA /* bell_sound_timer_end_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 16A6C4AF2CD7DEBE003C50FA /* bell_sound_timer_end_1.wav */; };
+		16A6C4B22CD7E3AB003C50FA /* bell_sound_3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 16A6C4B12CD7E3AB003C50FA /* bell_sound_3.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +114,8 @@
 		16A535E42C27642800259FC7 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		16A6C4AA2CD7CEC2003C50FA /* SoundTestDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTestDemo.swift; sourceTree = "<group>"; };
 		16A6C4AD2CD7D654003C50FA /* bell_sound_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell_sound_2.wav; sourceTree = "<group>"; };
+		16A6C4AF2CD7DEBE003C50FA /* bell_sound_timer_end_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell_sound_timer_end_1.wav; sourceTree = "<group>"; };
+		16A6C4B12CD7E3AB003C50FA /* bell_sound_3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell_sound_3.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,9 +314,11 @@
 		16A6C4AC2CD7D551003C50FA /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				16A6C4B12CD7E3AB003C50FA /* bell_sound_3.wav */,
 				16A6C4AD2CD7D654003C50FA /* bell_sound_2.wav */,
 				167CFCD62CB2E2750090362A /* session_end.mp3 */,
 				167CFCD72CB2E2750090362A /* button_click.mp3 */,
+				16A6C4AF2CD7DEBE003C50FA /* bell_sound_timer_end_1.wav */,
 				167CFCD82CB2E2750090362A /* bell_sound_1.mp3 */,
 			);
 			path = Audio;
@@ -423,8 +429,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1603127C2BE998FC00478E73 /* Preview Assets.xcassets in Resources */,
+				16A6C4B22CD7E3AB003C50FA /* bell_sound_3.wav in Resources */,
 				166EDA222CD3D2AC00E503E8 /* Tinos-BoldItalic.ttf in Resources */,
 				16A6C4AE2CD7D654003C50FA /* bell_sound_2.wav in Resources */,
+				16A6C4B02CD7DEBE003C50FA /* bell_sound_timer_end_1.wav in Resources */,
 				166EDA232CD3D2AC00E503E8 /* Tinos-Regular.ttf in Resources */,
 				166EDA212CD3D2AC00E503E8 /* Tinos-Italic.ttf in Resources */,
 				160312792BE998FC00478E73 /* Assets.xcassets in Resources */,

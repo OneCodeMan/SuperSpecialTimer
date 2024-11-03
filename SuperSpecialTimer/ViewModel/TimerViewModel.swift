@@ -32,6 +32,7 @@
 import Foundation
 import Combine
 import SwiftUI
+import AVFoundation
 
 enum Phase {
     case work, rest
@@ -44,6 +45,9 @@ final class TimerViewModel: ObservableObject {
     @Published var timerData: TimerData
     private var cancellable: Cancellable?
     private var durationSeconds: Duration
+    
+    private var player: AVAudioPlayer?
+    private var switchSound: String = "bell_sound_2"
     
     @Published var currentPhaseDisplay: String
     
@@ -85,6 +89,7 @@ final class TimerViewModel: ObservableObject {
         cancellable = Timer.publish(every: 0.01, on: .main, in: .common)
             .autoconnect()
             .sink { _ in self.incrementTimer() }
+        playStartEndTimerSound()
     }
     
     private func incrementTimer() {
@@ -116,6 +121,8 @@ final class TimerViewModel: ObservableObject {
         currentPhaseDisplay = "REST"
         durationSeconds = .seconds(timerData.restDuration)
         resetElapsedTime()
+        
+        playSwitchSound()
     }
     
     private func moveToNextRoundOrStop() {
@@ -124,6 +131,8 @@ final class TimerViewModel: ObservableObject {
             currentPhase = .work
             durationSeconds = .seconds(timerData.workDuration)
             resetElapsedTime()
+            
+            playSwitchSound()
         } else {
             stopAndResetTimer()
         }
@@ -143,11 +152,39 @@ final class TimerViewModel: ObservableObject {
         timerData.reset()
         resetElapsedTime()
         currentPhaseDisplay = "INACTIVE"
+        
+        playStartEndTimerSound()
     }
     
     private func resetElapsedTime() {
         elapsedMilliseconds = 0
         elapsedSeconds = .seconds(0)
+    }
+    
+    // MARK: Play sound
+    
+    func playStartEndTimerSound() {
+        playSound(named: "bell_sound_timer_end_1")
+    }
+    
+    func playSwitchSound() {
+        playSound(named: "bell_sound_3")
+    }
+    
+    private func playSound(named resourceName: String) {
+      guard let soundURL = Bundle.main.url(forResource: resourceName, withExtension: "wav") else {
+        return
+      }
+
+      do {
+       try? AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, options: [])
+        player = try AVAudioPlayer(contentsOf: soundURL)
+          
+        print("Sound successfully loaded")
+      } catch {
+        print("Failed to load the sound: \(error)")
+      }
+      player?.play()
     }
 }
 
