@@ -35,7 +35,7 @@ import SwiftUI
 import AVFoundation
 
 enum Phase {
-    case work, rest, inactive
+    case work, rest, inactive, sessionDone
 }
 
 final class TimerViewModel: ObservableObject {
@@ -76,6 +76,7 @@ final class TimerViewModel: ObservableObject {
     
     func activateTimer() {
         playStartEndTimerSound()
+        self.currentPhase = .work
         playTimer()
     }
     
@@ -85,6 +86,10 @@ final class TimerViewModel: ObservableObject {
     
     func isTimerActive() -> Bool {
         return !(currentPhase == .inactive)
+    }
+    
+    func isSessionOver() -> Bool {
+        return currentPhase == .sessionDone
     }
     
     private func pauseTimer() {
@@ -102,6 +107,8 @@ final class TimerViewModel: ObservableObject {
             currentPhaseDisplay = "REST"
         case .inactive:
             currentPhaseDisplay = "INACTIVE"
+        case .sessionDone:
+            currentPhaseDisplay = "SESSION DONE"
         }
         cancellable = Timer.publish(every: 0.01, on: .main, in: .common)
             .autoconnect()
@@ -163,8 +170,8 @@ final class TimerViewModel: ObservableObject {
         pauseTimer()
         timerData.reset()
         resetElapsedTime()
-        currentPhaseDisplay = "INACTIVE"
-        currentPhase = .inactive
+        currentPhaseDisplay = "END OF SESSION"
+        currentPhase = .sessionDone
         
         playStartEndTimerSound()
     }

@@ -17,6 +17,8 @@ struct CountdownView: View {
     @State var countdown = 3
     @State var completion: () -> ()
     
+    var originalCountdown = 3
+    
     var body: some View {
         Text("\(countdown)")
             .font(.system(size: 256))
@@ -24,6 +26,9 @@ struct CountdownView: View {
             .background(.yellow)
             .onAppear {
                 setupCountdown()
+            }
+            .onDisappear {
+                countdown = originalCountdown
             }
     }
     
@@ -33,8 +38,6 @@ struct CountdownView: View {
                 timer?.invalidate()
                 timer = nil
                 completion()
-//                runTracker.presentCountdown = false
-//                runTracker.startRun()
             } else {
                 countdown -= 1
             }

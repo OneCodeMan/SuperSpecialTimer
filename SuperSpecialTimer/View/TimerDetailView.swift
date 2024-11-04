@@ -26,7 +26,7 @@ struct TimerDetailView: View {
 
     var body: some View {
         // Active state
-        if !displayCountdownView && !displayInfoView {
+        if !displayCountdownView && !displayInfoView && !viewModel.isSessionOver() {
             VStack(spacing: 24) {
                 Spacer()
                 Text("\(viewModel.timerData.currentRound) / \(viewModel.timerData.numberOfRounds) Rounds")
@@ -82,7 +82,10 @@ struct TimerDetailView: View {
             .onAppear {
                 viewModel.activateTimer()
             }
-        } else if displayInfoView {
+            .onDisappear {
+                
+            }
+        } else if displayInfoView || viewModel.isSessionOver() {
             TimerInfoView {
                 self.displayInfoView = false
                 self.displayCountdownView = true
@@ -98,6 +101,7 @@ struct TimerDetailView: View {
 
 struct TimerInfoView: View {
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.dismiss) var dismiss
     @State var dismissAndPresentCountdown: () -> ()
     var body: some View {
         VStack {
