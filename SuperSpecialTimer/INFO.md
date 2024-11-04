@@ -7,7 +7,8 @@
 
 ### WAVE 1.1
 - [ ] Create a `postTimerSummary` view
-- [ ] Stop button tapped when timer is active: "Are you sure you want to stop"
+- [ ] Stop button tapped when timer is active: "Are you sure you want to stop?"
+    - [ ] Then: "Conclude session?" "Cancel session?"
 - [ ] Create `OnboardingView`
 - [ ] `TimerInfoView` does not display updated data.
     - probably displays placeholder or outdated data.
