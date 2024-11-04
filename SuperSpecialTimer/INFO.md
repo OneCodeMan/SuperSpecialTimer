@@ -7,7 +7,6 @@
 
 ### WAVE 1.1
 - [ ] Create a `postTimerSummary` view
-- [ ] Hide the back button on timer active state.
 - [ ] Stop button tapped when timer is active: "Are you sure you want to stop"
 - [ ] Create `OnboardingView`
 - [ ] `TimerInfoView` does not display updated data.
@@ -26,6 +25,10 @@
 .......................................................................................
 
 ## HISTORY
+
+### November 4, 2024
+- [x] Hide the back button on timer active state.
+- [x] Timer can repeat after stopped.
 
 ### November 2-3, 2024
 - [x] Have a detailsview with a button to a countdown view which segues to finally run the timer.
