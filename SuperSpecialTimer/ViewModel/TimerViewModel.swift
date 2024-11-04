@@ -35,13 +35,13 @@ import SwiftUI
 import AVFoundation
 
 enum Phase {
-    case work, rest
+    case work, rest, inactive
 }
 
 final class TimerViewModel: ObservableObject {
     @Published var elapsedSeconds: Duration = .seconds(0)
     @Published var elapsedMilliseconds: Int = 0
-    @Published var isTimerActive: Bool = false
+    @Published var isTimerOnPlay: Bool = false
     @Published var timerData: TimerData
     private var cancellable: Cancellable?
     private var durationSeconds: Duration
@@ -71,7 +71,7 @@ final class TimerViewModel: ObservableObject {
     }
     
     var shouldShowCancelButton: Bool {
-        isTimerActive || elapsedSeconds > .seconds(0)
+        isTimerOnPlay || elapsedSeconds > .seconds(0)
     }
     
     func activateTimer() {
@@ -80,22 +80,28 @@ final class TimerViewModel: ObservableObject {
     }
     
     func toggleTimer() {
-        isTimerActive ? pauseTimer() : playTimer()
+        isTimerOnPlay ? pauseTimer() : playTimer()
+    }
+    
+    func isTimerActive() -> Bool {
+        return !(currentPhase == .inactive)
     }
     
     private func pauseTimer() {
         cancellable?.cancel()
-        isTimerActive = false
+        isTimerOnPlay = false
     }
     
     private func playTimer() {
-        isTimerActive = true
+        isTimerOnPlay = true
 
         switch currentPhase {
         case .work:
             currentPhaseDisplay = "WORK"
         case .rest:
             currentPhaseDisplay = "REST"
+        case .inactive:
+            currentPhaseDisplay = "INACTIVE"
         }
         cancellable = Timer.publish(every: 0.01, on: .main, in: .common)
             .autoconnect()
@@ -158,6 +164,7 @@ final class TimerViewModel: ObservableObject {
         timerData.reset()
         resetElapsedTime()
         currentPhaseDisplay = "INACTIVE"
+        currentPhase = .inactive
         
         playStartEndTimerSound()
     }

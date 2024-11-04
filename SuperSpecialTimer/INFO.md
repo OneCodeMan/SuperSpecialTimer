@@ -1,4 +1,4 @@
-#  INFO
+#  DEVLOG
 
 ## I DON'T THINK THEY RUNNING AT MY PACE. JORDAN 1'S -- GOTTA KEEP THEM LACED.
 
@@ -8,10 +8,10 @@
 ### WAVE 1.1
 - [ ] Create a `postTimerSummary` view
 - [ ] Hide the back button on timer active state.
-- [ ] `TimerInfoView` does not display updated data.
-    - probably displays placeholder or outdated data.
 - [ ] Stop button tapped when timer is active: "Are you sure you want to stop"
 - [ ] Create `OnboardingView`
+- [ ] `TimerInfoView` does not display updated data.
+    - probably displays placeholder or outdated data.
 
 ### WAVE 1.2
 - [ ] Design the different types of timers.

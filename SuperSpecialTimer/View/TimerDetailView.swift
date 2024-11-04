@@ -67,17 +67,18 @@ struct TimerDetailView: View {
                     Button {
                         viewModel.toggleTimer()
                     } label: {
-                        Label(viewModel.isTimerActive ? "Pause" : "Start",
-                              systemImage: viewModel.isTimerActive ? "pause.circle.fill" : "play.circle.fill")
+                        Label(viewModel.isTimerOnPlay ? "Pause" : "Start",
+                              systemImage: viewModel.isTimerOnPlay ? "pause.circle.fill" : "play.circle.fill")
                             .font(.system(size: 70))
                             .symbolRenderingMode(.hierarchical)
                             .labelStyle(.iconOnly)
-                            .tint(viewModel.isTimerActive ? .orange : .green)
+                            .tint(viewModel.isTimerOnPlay ? .orange : .green)
                     }
                 }
                 .padding(.vertical, 44)
                 .padding(.horizontal, 24)
             }
+            .navigationBarBackButtonHidden(viewModel.isTimerActive())
             .onAppear {
                 viewModel.activateTimer()
             }
