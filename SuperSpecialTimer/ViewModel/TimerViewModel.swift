@@ -92,6 +92,10 @@ final class TimerViewModel: ObservableObject {
         return currentPhase == .sessionDone
     }
     
+    func resetPhase() {
+        currentPhase = .work
+    }
+    
     private func pauseTimer() {
         cancellable?.cancel()
         isTimerOnPlay = false

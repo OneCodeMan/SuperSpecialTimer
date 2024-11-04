@@ -89,6 +89,7 @@ struct TimerDetailView: View {
             TimerInfoView {
                 self.displayInfoView = false
                 self.displayCountdownView = true
+                viewModel.resetPhase()
             }
         } else if displayCountdownView {
             CountdownView {
