@@ -6,34 +6,43 @@
 ## November 3, 2024 [[[[October 31, 2024]]]]
 
 ### WAVE 1.1
-- [x] Create a `postTimerSummary` view
+- [ ] Basic `TimerStats`
     - [ ] If user did not terminate, record the session.
-- [ ] `TimerInfoView` does not display updated data.
-    - probably displays placeholder or outdated data.
-- [ ] Basic `UserStats`
-
-### WAVE 1.2
+    - [ ] User stats of how many times they have used timer and when.
+- [ ] On `TimerDetailView`, add an indicator on state.
+    - Whether it's paused or not mainly.
+..
 - [ ] Design the different types of timers.
-
-### Wave 1.3
+    - 3 types:
+        1. basic (work; no rest, no break) (oven, etc.)
+        2. pomodoro (work & break) (others: martial arts sparring/drilling rounds)
+        3. HIIT (work & rest & break)
+..                                                                                                                           
 - [ ] Style the List view
 - [ ] Perfect the Detail view.
-
-### Wave 1.4
-- [ ] User stats of how many times they have used timer and when.
+- [ ] Style the Onboarding View
+..
+- [ ] Create app logo
+- [ ] Create launch screen
 
 .......................................................................................
 
-## HISTORY
+# HISTORY
 
-### November 4, 2024
+## November 5, 2024
+- [x] Create a `postTimerSummary` view
+- [x] `TimerInfoView` does not display updated data.
+    - probably displays placeholder or outdated data.
+     - no it was dumber than that. global vars that were supposed to just be examples affecting shit.
+
+## November 4, 2024
 - [x] Create `OnboardingView`
 - [x] Stop button tapped when timer is active: "Are you sure you want to stop?"
     - [x] Then: "Conclude session?" "Cancel session?"
 - [x] Hide the back button on timer active state.
 - [x] Timer can repeat after stopped.
 
-### November 2-3, 2024
+## November 2-3, 2024
 - [x] Have a detailsview with a button to a countdown view which segues to finally run the timer.
 - [x] Implement `CountdownView`
 - [x] In the `TimerData` or somewhere in viewmodel, have vars responsible for displaying parsed data.

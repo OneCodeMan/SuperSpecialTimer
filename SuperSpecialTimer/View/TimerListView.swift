@@ -18,13 +18,6 @@ struct TimerListView: View {
     
     var body: some View {
         NavigationStack {
-            Text("")
-                .toolbar {
-                    // TODO: Coordinator pattern works best man
-                    NavigationLink(destination: EmptyView()) {
-                        Text("Add")
-                    }
-                }
             List {
                 ForEach(timerListViewModel.timers) { tm in
                     // Timer List Item View

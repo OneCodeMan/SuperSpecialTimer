@@ -115,7 +115,7 @@ struct TimerDetailView: View {
                     }
             })
         } else if displayInfoView || viewModel.isSessionOver() {
-            TimerInfoView {
+            TimerInfoView(timerData: $viewModel.timerData) {
                 self.displayInfoView = false
                 self.displayCountdownView = true
                 viewModel.resetPhase()
@@ -132,24 +132,25 @@ struct TimerDetailView: View {
 struct TimerInfoView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss
+    @Binding var timerData: TimerData
     @State var dismissAndPresentCountdown: () -> ()
     var body: some View {
         VStack {
-            Text(viewModel.timerData.title)
+            Text(timerData.title)
                 .font(.defaultFontLargeTitle)
-            Text(viewModel.timerData.display.numberOfRounds)
+            Text(timerData.display.numberOfRounds)
             
             // e.g.
             // Work Duration: 30 seconds
             // Work Duration: 5 minutes
             // Work Duration: 5 minutes 30 seconds
-            Text(viewModel.timerData.display.workDuration)
+            Text(timerData.display.workDuration)
             
             // e.g.
             // Rest Duration: 30 seconds
             // Rest Duration: 5 minutes
             // Rest Duration: 5 minutes 30 seconds
-            Text(viewModel.timerData.display.restDuration)
+            Text(timerData.display.restDuration)
             
             Button {
                 withAnimation {
@@ -162,8 +163,3 @@ struct TimerInfoView: View {
         .padding()
     }
 }
-
-// Usage example
-let timerData = TimerData(title: "Sample Timer", workDuration: 60, restDuration: 15, breakDuration: 30, numberOfRounds: 3)
-let viewModel = TimerViewModel(timerData: timerData)
-let timerDetailView = TimerDetailView(viewModel: viewModel)
