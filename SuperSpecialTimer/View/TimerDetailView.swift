@@ -21,8 +21,12 @@ struct TimerDetailView: View {
     // MARK: TabView currentIndex change
     @State var currentIndex: Int = 0
     
+    // MARK: Logic on which view to display
     @State private var displayCountdownView: Bool = false
     @State private var displayInfoView: Bool = true
+    
+    // MARK: Alert states
+    @State private var displayStopTimerConfirmationAlert: Bool = false
 
     var body: some View {
         // Active state
@@ -52,7 +56,7 @@ struct TimerDetailView: View {
                 HStack {
                     if viewModel.shouldShowCancelButton {
                         Button {
-                            viewModel.stopAndResetTimer()
+                            displayStopTimerConfirmationAlert = true
                         } label: {
                             Label("Cancel", systemImage: "xmark.circle.fill")
                                 .font(.system(size: 70))
@@ -78,6 +82,19 @@ struct TimerDetailView: View {
                 .padding(.vertical, 44)
                 .padding(.horizontal, 24)
             }
+            .alert(Text("End Session Confirmation"), isPresented: $displayStopTimerConfirmationAlert, actions: {
+                Button("Discard Session") {
+                    withAnimation {
+                        viewModel.stopAndResetTimer()
+                    }
+                }
+                Button("Terminate Session") {
+                    withAnimation {
+                        viewModel.stopAndResetTimer()
+                    }
+                }
+                Button("Cancel", role: .cancel) {}
+            })
             .navigationBarBackButtonHidden(viewModel.isTimerActive())
             .onAppear {
                 viewModel.activateTimer()

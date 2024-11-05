@@ -71,7 +71,7 @@ final class TimerViewModel: ObservableObject {
     }
     
     var shouldShowCancelButton: Bool {
-        isTimerOnPlay || elapsedSeconds > .seconds(0)
+        !isTimerOnPlay
     }
     
     func activateTimer() {

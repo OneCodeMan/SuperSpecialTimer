@@ -49,6 +49,7 @@
 		16A6C4AE2CD7D654003C50FA /* bell_sound_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 16A6C4AD2CD7D654003C50FA /* bell_sound_2.wav */; };
 		16A6C4B02CD7DEBE003C50FA /* bell_sound_timer_end_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 16A6C4AF2CD7DEBE003C50FA /* bell_sound_timer_end_1.wav */; };
 		16A6C4B22CD7E3AB003C50FA /* bell_sound_3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 16A6C4B12CD7E3AB003C50FA /* bell_sound_3.wav */; };
+		16FAFE4B2CD9A56600B71771 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FAFE4A2CD9A56600B71771 /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		16A6C4AD2CD7D654003C50FA /* bell_sound_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell_sound_2.wav; sourceTree = "<group>"; };
 		16A6C4AF2CD7DEBE003C50FA /* bell_sound_timer_end_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell_sound_timer_end_1.wav; sourceTree = "<group>"; };
 		16A6C4B12CD7E3AB003C50FA /* bell_sound_3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell_sound_3.wav; sourceTree = "<group>"; };
+		16FAFE4A2CD9A56600B71771 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 				16551C392C32E2E000372B41 /* TimerTypeSelectView.swift */,
 				16551C3D2C33463D00372B41 /* AddEditTimerView.swift */,
 				166EDA242CD3D37D00E503E8 /* CountdownView.swift */,
+				16FAFE4A2CD9A56600B71771 /* OnboardingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				16551C3A2C32E2E000372B41 /* TimerTypeSelectView.swift in Sources */,
 				166EDA162CD3CE9E00E503E8 /* UIColor+Builder.swift in Sources */,
 				160312772BE998FA00478E73 /* ContentView.swift in Sources */,
+				16FAFE4B2CD9A56600B71771 /* OnboardingView.swift in Sources */,
 				166EDA182CD3CF6F00E503E8 /* CarouselPage.swift in Sources */,
 				160312AB2BEBE92500478E73 /* AddTimerView.swift in Sources */,
 				16A535DD2C1936C100259FC7 /* AddEditTimerViewModel.swift in Sources */,

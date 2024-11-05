@@ -20,16 +20,19 @@ struct CountdownView: View {
     var originalCountdown = 3
     
     var body: some View {
-        Text("\(countdown)")
-            .font(.system(size: 256))
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.yellow)
-            .onAppear {
-                setupCountdown()
-            }
-            .onDisappear {
-                countdown = originalCountdown
-            }
+        VStack {
+            Text("\(countdown)")
+                .font(.system(size: 256))
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(.yellow)
+                .onAppear {
+                    setupCountdown()
+                }
+                .onDisappear {
+                    countdown = originalCountdown
+                }
+        }
+        .navigationBarBackButtonHidden()
     }
     
     func setupCountdown() {
