@@ -6,10 +6,11 @@
 ## November 3, 2024 [[[[October 31, 2024]]]]
 
 ### WAVE 1.1
-- Basic `UserStats`
-- [ ] Create a `postTimerSummary` view
+- [x] Create a `postTimerSummary` view
+    - [ ] If user did not terminate, record the session.
 - [ ] `TimerInfoView` does not display updated data.
     - probably displays placeholder or outdated data.
+- [ ] Basic `UserStats`
 
 ### WAVE 1.2
 - [ ] Design the different types of timers.

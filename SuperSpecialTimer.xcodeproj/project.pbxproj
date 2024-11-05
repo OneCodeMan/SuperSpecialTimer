@@ -50,6 +50,7 @@
 		16A6C4B02CD7DEBE003C50FA /* bell_sound_timer_end_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 16A6C4AF2CD7DEBE003C50FA /* bell_sound_timer_end_1.wav */; };
 		16A6C4B22CD7E3AB003C50FA /* bell_sound_3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 16A6C4B12CD7E3AB003C50FA /* bell_sound_3.wav */; };
 		16FAFE4B2CD9A56600B71771 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FAFE4A2CD9A56600B71771 /* OnboardingView.swift */; };
+		16FAFE4D2CD9A69500B71771 /* TimerSessionEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FAFE4C2CD9A69500B71771 /* TimerSessionEndView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		16A6C4AF2CD7DEBE003C50FA /* bell_sound_timer_end_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell_sound_timer_end_1.wav; sourceTree = "<group>"; };
 		16A6C4B12CD7E3AB003C50FA /* bell_sound_3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bell_sound_3.wav; sourceTree = "<group>"; };
 		16FAFE4A2CD9A56600B71771 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		16FAFE4C2CD9A69500B71771 /* TimerSessionEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSessionEndView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 				16551C3D2C33463D00372B41 /* AddEditTimerView.swift */,
 				166EDA242CD3D37D00E503E8 /* CountdownView.swift */,
 				16FAFE4A2CD9A56600B71771 /* OnboardingView.swift */,
+				16FAFE4C2CD9A69500B71771 /* TimerSessionEndView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				160312B32BEC354A00478E73 /* MockTimers.swift in Sources */,
 				16A535E52C27642800259FC7 /* Theme.swift in Sources */,
 				160312752BE998FA00478E73 /* SuperSpecialTimerApp.swift in Sources */,
+				16FAFE4D2CD9A69500B71771 /* TimerSessionEndView.swift in Sources */,
 				160312A32BEBE58F00478E73 /* TimerData.swift in Sources */,
 				16551C3E2C33463D00372B41 /* AddEditTimerView.swift in Sources */,
 				16A535DF2C19386D00259FC7 /* CustomAddEditTimerRowView.swift in Sources */,

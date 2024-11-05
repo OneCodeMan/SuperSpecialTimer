@@ -27,6 +27,10 @@ struct TimerDetailView: View {
     
     // MARK: Alert states
     @State private var displayStopTimerConfirmationAlert: Bool = false
+    @State private var displayTimerSessionEndViewModal: Bool = false
+    
+    // MARK: Environment variables
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         // Active state
@@ -87,11 +91,13 @@ struct TimerDetailView: View {
                     withAnimation {
                         viewModel.stopAndResetTimer()
                     }
+                    self.dismiss()
                 }
                 Button("Terminate Session") {
                     withAnimation {
-                        viewModel.stopAndResetTimer()
+                        self.displayTimerSessionEndViewModal = true
                     }
+                    
                 }
                 Button("Cancel", role: .cancel) {}
             })
@@ -102,6 +108,12 @@ struct TimerDetailView: View {
             .onDisappear {
                 
             }
+            .sheet(isPresented: $displayTimerSessionEndViewModal, content: {
+                TimerSessionEndView()
+                    .onDisappear {
+                        self.viewModel.stopAndResetTimer()
+                    }
+            })
         } else if displayInfoView || viewModel.isSessionOver() {
             TimerInfoView {
                 self.displayInfoView = false
