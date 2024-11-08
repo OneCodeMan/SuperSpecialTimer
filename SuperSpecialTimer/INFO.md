@@ -6,9 +6,6 @@
 ## November 3, 2024 [[[[October 31, 2024]]]]
 
 ### WAVE 1.1
-- [ ] Basic `TimerStats`
-    - [ ] If user did not terminate, record the session.
-    - [ ] User stats of how many times they have used timer and when.
 - [ ] On `TimerDetailView`, add an indicator on state.
     - Whether it's paused or not mainly.
 ..
@@ -20,10 +17,18 @@
 ..                                                                                                                           
 - [ ] Style the List view
 - [ ] Perfect the Detail view.
+..
+- [ ] Add multiple sounds
+..
 - [ ] Style the Onboarding View
 ..
 - [ ] Create app logo
 - [ ] Create launch screen
+
+### WAVE 1.2
+- [ ] Basic `TimerStats`
+    - [ ] If user did not terminate, record the session.
+    - [ ] User stats of how many times they have used timer and when.
 
 .......................................................................................
 
